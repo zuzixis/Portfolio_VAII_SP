@@ -1,40 +1,78 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-    <title>FRI-MVC FW</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="public/css.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blogy">
+    <meta name="keywords" content="Blog">
+    <meta name="author" content="Zuzana Žillová">
+    <title>Blogy</title>
+    <link rel="stylesheet" href="<?=\App\Config\Configuration::STYLE?>" type="text/css">
+    <script src="../skript/skript.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
-    <div class="container">
-        <a class="navbar-brand" href="#">FRI-MVC FW </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="?c=home">Domov</a>
+<header>
+    <div class="menu">
+        <div class="left-blue-area">
+            <div class="left-blue-background "></div>
+            <img id="logo-icon" src="<?=\App\Config\Configuration::IMG_DIR."portfolio.png"?>" alt="Logo">
+            <ul>
+                <li>
+                    <a href="tel:+421910117452" >
+                        <img src="<?=\App\Config\Configuration::IMG_DIR."telefon.png"?>" alt="ikona telefónu">
+                    </a>
+
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="?c=home&a=contact">Kontakt</a>
+                <li>
+                    <a href="https://www.instagram.com/zuzka150/" target="_blank">
+                        <img src="<?=\App\Config\Configuration::IMG_DIR."instagram.png"?>" alt="ikona instagram">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/zillova" target="_blank">
+                        <img  src="<?=\App\Config\Configuration::IMG_DIR."facebook.png"?>" alt="ikona facebook">
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:zuzka.zillova@gmail.com" >
+                        <img src="<?=\App\Config\Configuration::IMG_DIR."email.png"?>" alt="ikona email">
+                    </a>
                 </li>
             </ul>
         </div>
+
+        <nav class="main-menu">
+            <img class="btn-menu" onclick="openCloseNav()" src="<?=\App\Config\Configuration::IMG_DIR."menu.png"?>" alt="menu">
+
+            <ul id="menu-items">
+                <li><a href="?c=home&a=index">Domov</a></li>
+                <li class="active"><a href="?c=blog&a=blogBlogs">Blog</a></li>
+                <li><a href="?c=portfolio&a=portfolios">Portfóliá</a></li>
+
+                <?php
+                if (\App\Auth::isLogged())
+                {?>
+                    <li class="no-active"><a id="btn-login" href="?c=auth&a=logout">Odhlásiť sa</a></li>
+                <?php
+                }else{?>
+                    <li><a id="btn-login" href="<?= \App\Config\Configuration::LOGIN_URL ?>">Prihlásenie</a></li>
+                <?php }?>
+
+
+            </ul>
+        </nav>
     </div>
-</nav>
-<div class="container">
-    <div class="row mt-2">
-        <div class="col">
-                <?= $contentHTML ?>
-        </div>
+</header>
+
+    <?= $contentHTML ?>
+
+<!--<footer class="footer">
+    <div>
     </div>
-</div>
+</footer>-->
+
 </body>
 </html>
+
+
 

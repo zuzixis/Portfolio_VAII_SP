@@ -1,0 +1,1421 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #FFF;
+    background-attachment: fixed;
+    margin: 0 auto;
+    width: 100%;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a{
+    text-decoration: none;
+}
+
+.menu{
+    font-family: "Arial Rounded MT" , Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    color: #FFFFFF;
+    width: 100%;
+}
+
+.left-blue-area {
+    height: 100%;
+    left: 150px;
+    text-align: center;
+    bottom: 0;
+    position: fixed;
+    z-index: 2;
+}
+
+.left-blue-area ul {
+    position: relative;
+    z-index: 2;
+}
+
+.left-blue-area li {
+    margin-bottom: 8px;
+    list-style: none;
+}
+.left-blue-area img {
+    height: 32px;
+    width: 32px;
+}
+
+.left-blue-area img:hover {
+    height: 38px;
+    width: 38px;
+}
+
+.left-blue-background{
+    background-color: #1193d6;
+    width: 73%;
+    height: 120%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+#logo-icon {
+    height: 198px;
+    width: auto;
+    top: 22px;
+    z-index: 1;
+    margin-bottom: 24px;
+    position: relative;
+}
+
+#first-section{
+    margin-top: 200px;
+    height: 120%;
+}
+
+.main-menu {
+    background-color: #202020;
+    height: 110px;
+    margin-top: 40px;
+    padding-top: 25px;
+    padding-right: 190px;
+    position: fixed;
+    width: 100%;
+    text-align: right;
+    z-index: 1;
+}
+
+.main-menu > ul {
+    margin-top: 40px;
+    padding-right: 150px;
+}
+
+.main-menu li {
+    list-style: none;
+    display: inline-block;
+    margin-right: 25px;
+}
+
+.main-menu li a {
+    color: #FFFFFF;
+}
+
+.main-menu li:not(.no-active):hover::before, .main-menu li.active::before {
+    background-image: url(../img/menu-arrow.png);
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    display: block;
+    height: 10px;
+    padding-bottom: 10px;
+    background-position-x: center;
+    content: "";
+}
+
+
+#btn-login {
+    background-color: #1193D6;
+    border: 1px solid #FFFFFF;
+    border-radius: 20px;
+    color: #FFFFFF;
+    text-align: center;
+    font-family: "Arial Rounded MT, Arial", Helvetica, sans-serif;
+    font-size: 18px;
+    padding: 8px;
+    height: 36px;
+}
+
+#btn-prihlasenie:hover, #btn-new-blog:hover,  .btn-h-center{
+    background-color: #0E78AD;
+}
+
+.btn-menu {
+    height: 40px;
+    width: 40px;
+    position: relative;
+    right: 40px;
+    display: none;
+    cursor: pointer;
+}
+
+.btn-menu:hover{
+    height: 45px;
+    width: auto;
+}
+
+footer{
+    height: 120px;
+    width: 100%;
+    bottom: 0;
+    background: #202020;
+}
+
+.log-photo{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+/*==========================================================================================*/
+/*===STYLE-DOMOV===*/
+.main-title{
+    text-align: right;
+    position: absolute;
+    top: 40%;
+    left: 25%;
+    right: 10%;
+}
+
+.main-title h1{
+    font-size: 100px;
+    font-family: "Bahnschrift Condensed",sans-serif;
+}
+
+.main-title h1:first-line{
+    color: #202020;
+    text-shadow: 2px 2px #FFF;
+    font-size: 120px;
+}
+
+.main-title h2{
+    padding-top: 10px;
+    padding-bottom: 30px;
+    font-size: 18px;
+    font-family: Helvetica, sans-serif;
+}
+
+.body-page{
+    text-align: center;
+}
+
+.body-page p{
+    font-family:  Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+.body-page section{
+    width: 65%;
+    margin: 5% 0 15% 25%;
+}
+
+.body-page h2{
+    font-size: 60px;
+    color: #202020;
+    /*text-shadow: 2px 2px #1193D6;*/
+    font-family: "Bahnschrift Condensed",sans-serif;
+}
+
+.body-page-photo{
+    max-width: 150px;
+    height: auto;
+}
+
+.btn-link{
+    margin: 20px 0 20px 0;
+}
+
+.btn-h-center{
+    background-color: #1193D6;
+    border: 1px solid #FFF;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 18px;
+    padding: 8px;
+    font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
+    margin: auto;
+    width: 15%;
+}
+
+.btn-link a{
+    color: #FFF;
+}
+/*===================================================================================*/
+/*===STYLE-PORTFÓLIÁ===*/
+
+.portfolio-page #first-section{
+    margin-top: 200px;
+}
+
+.portfolio-page section{
+    width: 65%;
+    margin: 2% 0 2% 25%;
+}
+
+.portfolio-page h1{
+    font-size: 50px;
+    font-family: "Bahnschrift Condensed",sans-serif;
+}
+
+.portfolio-page img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.portfolio-page .grid img {
+    width: 80%;
+    height: 80%;
+}
+
+.portfolio-page .grid img:hover {
+    box-shadow: 2px 2px 30px rgba(0,0,0,0.4);
+}
+
+.portfolio-page a{
+    color: black;
+    font-family: sans-serif;
+}
+
+
+.portfolio-page a:hover{
+    color: #0E78AD;
+}
+
+/*====================================================================================*/
+/*BLOG*/
+
+.blog-body section{
+    margin-left: 25%;
+}
+
+
+.blog-body h1{
+    font-family: "Bahnschrift Condensed",sans-serif;
+    font-size: 40px;
+    padding-top: 20px;
+}
+
+.blog-body li {
+    list-style: none;
+    display: inline-block;
+    margin-left: 20px;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.blog-body li a, .contact a {
+    color: #000;
+}
+
+.blog-body li:not(.no-active):hover::before, .blog-body li.active::before {
+    background-image: url(../img/menu-arrow.png);
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    display: block;
+    height: 10px;
+    padding-bottom: 10px;
+    background-position-x: center;
+    content: "";
+}
+
+#btn-new-blog {
+    background-color: #1193D6;
+    border-radius: 15px;
+    color: #FFF;
+    text-align: center;
+    font-family: Arial,Helvetica, sans-serif;
+    font-size: 18px;
+    padding: 5px;
+}
+
+.box{
+    display: flex;
+    margin: 25px;
+    border-bottom: 1px solid #000;
+    width: 70%;
+}
+
+.blog-body img{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.info{
+    padding: 15px;
+}
+
+.blog-body a {
+    color: #272727;
+}
+
+.blog-body h3 {
+    font-family:  Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+.blog-body h3:hover {
+    color: #0E78AD;
+}
+
+.info h4{
+    font-family:  Arial, sans-serif;
+    font-weight: 10;
+    font-size: 15px;
+}
+.blog-body h4:hover{
+    color: #0E78AD;
+}
+
+
+.blog-body p{
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    padding-top: 5px;
+    margin-bottom: 7px;
+}
+
+.blogger-box{
+    width: 70%;
+    display: inline-block;
+    padding:0;
+}
+
+.blogger-box{
+    margin: 25px;
+}
+
+#btn-update-blog , #btn-delete-blog {
+    background-color: #1193D6;
+    border-radius: 12px;
+    color: #FFF;
+    text-align: center;
+    font-family: Arial,Helvetica, sans-serif;
+    font-size: 11px;
+    padding: 5px;
+}
+
+#btn-delete-blog{
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.modify{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.modify-item{
+    margin: 5px;
+}
+
+/*=============================================================================*/
+/*==PROFIL===*/
+section {
+    margin-left: 20%;
+}
+
+.header-profil img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    padding-top: 10px;
+    margin-bottom: 10px;
+}
+
+.header-title{
+    padding-top: 30px;
+    padding-left: 15px;
+}
+
+.header-profil{
+    display: flex;
+    border-bottom: 1px solid #000;
+}
+
+.header-profil, .profil-info, .profil-skills, .contact,
+.profil-portfolio, .profil-blogs{
+    margin: 25px;
+    width: 80%;
+}
+
+.header-title h1{
+    font-family: "Bahnschrift Condensed",sans-serif;
+    font-size: 40px;
+    padding-top: 20px;
+}
+
+.header-title h3{
+    font-family: Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+.profil-skills li {
+    display: inline-block;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.skill-icons{
+    width: 60px;
+    height: auto;
+}
+
+.contact img{
+    width: 18px;
+    height: auto;
+    margin-left: 7px;
+}
+
+.contact a, .contact span, .profil-blogs a{
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.contact a:hover, .profil-blogs a:hover{
+    color: #0f7db6;
+}
+
+.contact li{
+    list-style: none;
+}
+
+.p-subtitles {
+    font-family: "Bahnschrift Condensed",sans-serif;
+    font-size: 30px;
+    padding-top: 20px;
+}
+
+.profil-info p{
+    font-size: 16px;
+    margin-left: 7px;
+    font-family: Arial, sans-serif;
+}
+
+.profil-blogs li{
+    list-style: square;
+    font-size: 18px;
+}
+
+.profil-blogs ul{
+    padding-top: 10px;
+    padding-left: 30px;
+}
+
+.grid{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 30px 0 0 0;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.grid-item{
+    min-width: 300px;
+    min-height: 300px;
+    overflow: hidden;
+    max-width: 500px;
+    flex: 0 0 30%;
+    padding: 10px;
+    flex-wrap: wrap;
+    margin: 25px 0;
+    text-align: center;
+    box-shadow: 2px 2px 30px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    height: auto;
+    display: inline-block;
+    /*z-index: -1;*/
+}
+
+.grid img{
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.detail-grid-item{
+    text-align: center;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/*==========================================================================*/
+/*PRIHLASENIE SA*/
+.abstract-background{
+    width: 100%;
+    min-height: 100vh;
+    z-index: -2;
+    position: relative;
+    background-size: cover;
+}
+
+.center{
+    position: absolute;
+    top: 58%;
+    left: 56%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    background: white;
+    border-radius: 10px;
+    font-family: sans-serif;
+}
+
+.center h1{
+    text-align: center;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid silver;
+}
+
+.center form{
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+form .txt_field{
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
+}
+
+.txt_field input{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.txt_field label{
+    position: absolute;
+    top:50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.txt_field span::before{
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #2691d9;
+    transition: .5s;
+}
+
+.txt_field input:focus ~ label, .txt_field input:valid ~ label{
+    top: -5px;
+    color: #2691d9;
+}
+
+.txt_field input:focus ~ span::before, .txt_field input:valid ~ span::before{
+    width: 100%
+}
+
+.pass{
+    margin: -5px 0 20px 5px;
+    color: #a6a6a6;
+    cursor: pointer;
+}
+
+.pass:hover{
+    text-decoration: underline;
+}
+
+input[type="submit"]{
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+    background: #2691d9;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+}
+
+
+.signup_link{
+    margin: 30px 0;
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+}
+
+.signup_link a{
+    color: #2691d9;
+}
+
+.signup_link a:hover{
+    text-decoration: underline;
+}
+
+/*========================================================================*/
+/*REGISTRÁCIA*/
+.registration-body .center{
+    top: 57%;
+    left: 55%;
+    width: 60%;
+}
+
+.registration-body .center h1{
+    font-size: 30px;
+}
+
+.registration-body .center .left-side{
+    width: 50%;
+}
+
+.registration-body .center .right-side{
+    width: 50%;
+    margin-top: 90px;
+}
+
+.registration-body .center{
+    display: flex;
+    margin: 30px 0 0 0;
+    flex-wrap: wrap;
+}
+
+.registration-body h3{
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+/*========================================================================*/
+/*PÍSANIE BLOGU*/
+.blog-body-create #btn-new-blog{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.blog-body-create .center{
+    position: absolute;
+    top: 550px;
+    left: 57%;
+    width: 63%;
+    border-radius: 10px;
+    font-family: sans-serif;
+    background: white;
+    box-shadow: 2px 2px 30px rgba(0,0,0,0.2);
+    margin: 43px 0 0 0
+}
+
+.blog-body-create .center h1{
+    font-size: 20px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.blog-body-create .center .left-side{
+    width: 30%;
+
+}
+
+.blog-body-create .center .right-side{
+    width: 70%;
+}
+
+.blog-body-create .center {
+    display: flex;
+    margin: 50px 0 0 0;
+    flex-wrap: wrap;
+    padding: 10px 10px;
+}
+
+.blog-body-create .center form {
+    padding: 0 5px;
+}
+
+.blog-body-create section {
+    margin-left: 25%;
+}
+
+
+#create-short-text{
+    width: 100%;
+    border-color: #2691d9;
+    height: 24vh;
+}
+
+#create-blog-text{
+    width: 100%;
+    border-color: #2691d9;
+    height: 46vh;
+}
+
+textarea{
+    font-family:Arial,sans-serif;
+    font-size: 14px;
+}
+
+.blog-body-create label{
+    font-family: "Bahnschrift Condensed",sans-serif;
+    font-size: 15px;
+    margin-right: 50%;
+}
+
+.blog-body-create input[type="submit"] {
+    width: 179px;
+    height: 38px;
+    font-size: 16px;
+    margin-top: 13px;
+}
+
+/*===========================================================================*/
+/*ČLÁNOK*/
+
+.article-body p{
+    font-family: Arial,sans-serif;
+    font-size: 15px;
+    padding-bottom: 30px;
+}
+
+.article-body h2{
+    font-family: sans-serif;
+    font-size: 18px;
+}
+
+/*===========================================================================================*/
+/*
+    RESPONZÍVNY DIZAJN
+*/
+
+/*Desktops - menší */
+@media screen and (max-width: 1600px){
+    /*NAVIGÁCIA*/
+    .main-menu{
+        padding-right: 8px;
+    }
+    .left-blue-area{
+        left: 0;
+    }
+    .main-menu li{
+        margin-right: 15px;
+    }
+
+    .main-menu > ul {
+        padding-right: 0;
+    }
+
+    /*DOMOV*/
+    .main-title{
+        text-align: right;
+        padding-right: 25px;
+    }
+
+    .main-title h1{
+        font-size: 80px;
+    }
+
+    .main-title h1:first-line{
+        font-size: 100px;
+    }
+
+    /*BLOGY*/
+    .blog-body section{
+        margin-top: 200px;
+        margin-left: 260px;
+    }
+
+    .blog-body-create section {
+        margin-left: 25%;
+    }
+
+    .box{
+        width: 90%;
+    }
+
+    /*==PROFIL===*/
+    .grid{
+        display: flex;
+        justify-content: space-evenly;
+        margin: 30px 0 0 0;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+    .grid-item{
+        min-width: 270px;
+        min-height: 270px;
+        max-width: 450px;
+    }
+
+    /*==ČLÁNOK===*/
+    .article-body section {
+        margin-top: 10px;
+    }
+}
+
+/* Tablety */
+@media screen and (max-width: 780px) {
+    /*NAVIGÁCIA*/
+    .btn-menu{
+        display: initial;
+    }
+    .main-menu > ul {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    #logo-icon {
+        height: 120px;
+    }
+    .main-menu {
+        height: 70px;
+        margin-top: 30px;
+    }
+
+    #menu-items{
+        display: none;
+    }
+
+    .main-menu li {
+        background-color: #272727;
+        width: 100%;
+        padding-top: 18px;
+        padding-bottom: 18px;
+        margin-right: 60px;
+    }
+
+    /*DOMOV*/
+    #first-section{
+        margin-top: 100px;
+    }
+    .main-title{
+        margin-left: 125px;
+        top: 30%;
+        left: 0;
+        right: 5%;
+    }
+
+    .main-title h1{
+        font-size: 50px;
+    }
+
+    .main-title h1:first-line{
+        font-size: 80px;
+    }
+
+    .main-title h2 {
+        padding-top: 0;
+        font-size: 14px;
+    }
+
+    .body-page p{
+        font-size: 14px;
+    }
+
+    .body-page h2{
+        font-size: 40px;
+    }
+
+    .body-page-photo{
+        max-width: 100px;
+    }
+
+    /*BLOG*/
+    .blog-body section{
+        margin-left: 120px;
+    }
+
+    .blog-body h1{
+        padding-top: 40px;
+    }
+
+    .box{
+        width: 90%;
+    }
+
+    .blog-body p{
+        font-size: 12px;
+    }
+
+    .box img{
+        width: 70px;
+        height: 70px;
+    }
+
+
+    /*PÍSANIE BLOGU*/
+    .blog-body-create h1{
+        font-size: 27px;
+    }
+
+    .blog-body-create #btn-new-blog{
+        font-size: 13px;
+        padding: 7px 20px;
+        margin-top: 150px;
+    }
+
+    .blog-body-create li{
+        margin:12px 0;
+        padding: 0;
+    }
+
+    .blog-body-create .center{
+        top: 680px;
+        left: 60%;
+        margin: 0;
+    }
+
+    .blog-body-create .center {
+        display: block;
+    }
+
+    .blog-body-create .center .left-side {
+        width: 100%;
+    }
+
+    .blog-body-create .center .right-side {
+        width: 100%;
+    }
+
+    .blog-body-create h1{
+        padding-top: 10px;
+    }
+
+    .blog-body-create #first-section{
+        margin-top:120px;
+    }
+
+    .blog-body-create input[type="submit"] {
+        width: 100%;
+        height: 30px;
+        font-size: 12px;
+        margin-top: 6px;
+        margin-bottom: 10px;
+    }
+
+    .blog-body-create label {
+        font-size: 14px;
+        margin-right: 15%;
+    }
+
+    /*REGISTRÁCIA*/
+    .registration-body .center{
+        top: 50%;
+        left: 60%;
+        width: 73%;
+    }
+
+    .registration-body .center h1{
+        font-size: 20px;
+    }
+
+    .registration-body .center label{
+        font-size: 12px;
+    }
+
+    .registration-body h3{
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    .registration-body input[type="submit"] {
+        width: 100%;
+        height: 25px;
+        font-size: 11px;
+        font-weight: 500;
+    }
+
+    .center form{
+        padding-left: 12px;
+    }
+
+    /*PRIHLASOVANIE*/
+    .center{
+        width: 300px;
+        left:58%;
+    }
+
+    /*PORTFOLIA*/
+    .portfolio-page #first-section{
+        margin-top: 165px;
+    }
+    .portfolio-page h1{
+        font-size: 35px;
+    }
+
+    .portfolio-page h3{
+        font-size: 15px;
+    }
+
+    .portfolio-page .grid-item{
+        margin: 10px 0;
+    }
+
+    /*ČLÁNOK*/
+    .article-body h2{
+        font-size: 15px;
+    }
+
+}
+
+/* Mobily */
+@media screen and (max-width: 414px) {
+    /*NAVIGÁCIA*/
+    .main-menu {
+        height: 33px;
+        margin-top: 27px;
+    }
+
+    #logo-icon {
+        height: 75px;
+    }
+
+    .btn-menu {
+        right: 10px;
+        height: 18px;
+        width: auto;
+    }
+
+    .btn-menu:hover {
+        height: 18px;
+        width: auto;
+    }
+
+    .left-blue-area img {
+        height: 25px;
+        width: auto;
+    }
+
+    .left-blue-area img:hover {
+        height: 25px;
+        width: auto;
+    }
+
+    .menu {
+        font-size: 12px;
+    }
+
+    .main-menu li {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    #btn-login {
+        border-radius: 10px;
+        font-size: 12px;
+        padding: 4px;
+    }
+
+
+    /*DOMOV*/
+    #first-section {
+        margin-top: 60px;
+    }
+
+    .main-title {
+        top: 15%;
+        right: 5%;
+        margin-left: 100px;
+    }
+
+    .main-title h1 {
+        font-size: 30px;
+    }
+
+    .main-title h1:first-line {
+        font-size: 60px;
+    }
+
+    .main-title h2 {
+        padding-top: 0;
+        font-size: 12px;
+    }
+
+    .body-page p{
+        font-size: 12px;
+    }
+
+    .body-page h2{
+        font-size: 28px;
+    }
+
+    .body-page-photo{
+        max-width: 80px;
+    }
+
+    .btn-link{
+        margin: 10px 0 10px 0;
+    }
+
+    .btn-h-center{
+        font-size: 14px;
+    }
+
+
+    /*BLOG*/
+    .blog-body section {
+        margin-left: 70px;
+    }
+
+    .blog-body h1 {
+        padding-top: 30px;
+        font-size: 25px;
+    }
+
+
+    .blog-body li {
+        margin-left: 10px;
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .blog-body li:not(.no-active):hover::before, .blog-body li.active::before {
+        background-size: 10px 10px;
+        height: 10px;
+    }
+
+    #btn-new-blog {
+        font-size: 12px;
+        padding: 2px;
+    }
+
+    .box {
+        margin: 5px;
+        width: 87%;
+    }
+
+    .blog-body img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .info {
+        padding: 10px;
+    }
+
+
+    .blog-body h3 {
+        font-family: Helvetica, sans-serif;
+        font-size: 15px;
+    }
+
+    .blog-body h4 {
+        font-size: 10px;
+    }
+
+    .blog-body p {
+        font-size: 12px;
+    }
+
+    /*PRIHLÁSENIE*/
+    .center{
+        top: 33%;
+        width: 200px;
+        left: 61%;
+    }
+
+    .center h1{
+        padding: 3px 0 3px 0;
+        font-size: 20px;
+    }
+
+    .center form{
+        padding: 0 10px;
+    }
+
+    form .txt_field{
+        margin: 20px 0;
+    }
+
+    .txt_field input{
+        height: 22px;
+        font-size: 12px;
+    }
+
+    .txt_field label{
+        font-size: 12px;
+    }
+
+    .txt_field span::before{
+        top: 22px;
+    }
+
+
+    .pass{
+        margin: -5px 0 20px 5px;
+        font-size:12px;
+    }
+
+
+    input[type="submit"]{
+        height: 25px;
+        font-size: 12px;
+    }
+
+
+    .signup_link{
+        margin: 10px 0;
+        font-size: 12px;
+        color: #666;
+    }
+
+    /*==PROFIL===*/
+    .header-profil{
+        padding-top:40px;
+    }
+    .header-profil img{
+        width: 80px;
+        height: 80px;
+    }
+
+    .contact li {
+        font-size: 11px;
+    }
+
+    .header-title h1{
+        font-size: 20px;
+    }
+
+    .header-title h3{
+        font-size: 13px;
+    }
+
+    .skill-icons{
+        width: 30px;
+        height: auto;
+    }
+
+    .contact img{
+        width: 15px;
+    }
+
+    .p-subtitles {
+        font-size: 25px;
+    }
+
+    .profil-info p{
+        font-size: 13px;
+    }
+
+    .profil-blogs li{
+        font-size: 12px;
+    }
+
+    .p-subtitles{
+        font-size: 20px;
+    }
+
+    /*PORTFOLIA*/
+    .portfolio-page #first-section{
+        margin-top: 120px;
+    }
+    .portfolio-page h1{
+        font-size: 25px;
+        padding-left: 5%;
+        margin: 10px 0;
+    }
+
+
+    .portfolio-page h3{
+        font-size: 12px;
+    }
+
+    .portfolio-page img{
+        width: 80px;
+        height: 80px;
+    }
+
+    .portfolio-page .grid-item{
+        min-width: 100px;
+        min-height: 50px;
+    }
+
+    /*REGISTRÁCIA*/
+    .registration-body .center{
+        height: 500px;
+    }
+
+    .registration-body .center{
+        top: 39%;
+        left: 62%;
+    }
+
+    .registration-body .center h1{
+        margin-top: 20px;
+        font-size: 20px;
+    }
+
+    .registration-body .center label{
+        font-size: 11px;
+    }
+
+    .registration-body h3{
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+
+    .registration-body input[type="submit"] {
+        width: 100%;
+        height: 25px;
+        font-size: 11px;
+        font-weight: 500;
+    }
+
+    .center form{
+        padding-left: 6px;
+    }
+
+    form .txt_field {
+        margin: 32px 0;
+    }
+
+    .registration-body .center .right-side {
+        margin-top: 54px;
+    }
+
+    /*PÍSANIE BLOGU*/
+    .blog-body-create h1{
+        font-size: 25px;
+    }
+
+    .blog-body-create #btn-new-blog{
+        font-size: 12px;
+        padding: 6px 18px;
+        margin-top: 150px;
+    }
+
+    .blog-body-create li{
+        margin:12px 0;
+        padding: 0;
+    }
+
+    .blog-body-create .center{
+        top: 680px;
+    }
+
+
+    .blog-body-create h1{
+        padding-top: 0;
+    }
+
+    .blog-body-create #first-section{
+        margin-top:120px;
+    }
+
+    .blog-body-create label {
+        font-size: 12px;
+        margin-right: 10%;
+    }
+
+    textarea {
+        font-family: Arial,sans-serif;
+        font-size: 12px;
+    }
+
+    /*ČLÁNOK*/
+    .article-body h2{
+        font-size: 13px;
+    }
+}
+/*=======================================================================*/
