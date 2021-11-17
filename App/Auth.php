@@ -34,7 +34,23 @@ class Auth
     }
 
     public static function logout(){
-        unset($_SESSION['name']);
+        unset($_SESSION['id']);
         session_destroy();
+    }
+
+    public static function register(mixed $email, mixed $password)
+    {
+        $found = User::getAll('email like "'.$email.'"');
+
+        if ($found == null)
+        {
+            $newUser = new User(email: $email, password: $password );
+            $newUser->save();
+            self::login($email,$password);
+            return true;
+        }else{
+            return false;
+        }
+
     }
 }

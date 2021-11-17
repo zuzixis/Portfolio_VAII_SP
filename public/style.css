@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: Helvetica, sans-serif;
 }
 body{
     background-color: #FFF;
@@ -152,6 +153,7 @@ footer{
     width: 100%;
     bottom: 0;
     background: #202020;
+    margin-top: 30px;
 }
 
 .log-photo{
@@ -422,6 +424,7 @@ section {
     border-radius: 50%;
     padding-top: 10px;
     margin-bottom: 10px;
+    object-fit: contain;
 }
 
 .header-title{
@@ -540,6 +543,17 @@ section {
     font-family: Arial, sans-serif;
 }
 
+#btn-update-profil{
+    background-color: #1193D6;
+    border-radius: 20px;
+    color: #FFF;
+    text-align: center;
+    font-family: Arial,Helvetica, sans-serif;
+    font-size: 13px;
+    padding: 6px;
+    margin-top: 4px;
+}
+
 /*==========================================================================*/
 /*PRIHLASENIE SA*/
 .abstract-background{
@@ -624,6 +638,11 @@ form .txt_field{
     cursor: pointer;
 }
 
+.reg-error{
+    margin: -5px 0 20px 5px;
+    color: #ff3333;
+}
+
 .pass:hover{
     text-decoration: underline;
 }
@@ -659,18 +678,18 @@ input[type="submit"]{
 
 /*========================================================================*/
 /*REGISTRÁCIA*/
+.reg form{
+    padding-bottom: 30px;
+}
+
 .registration-body .center{
     top: 57%;
     left: 55%;
-    width: 60%;
+    width: 50%;
 }
 
 .registration-body .center h1{
     font-size: 30px;
-}
-
-.registration-body .center .left-side{
-    width: 50%;
 }
 
 .registration-body .center .right-side{
@@ -688,6 +707,11 @@ input[type="submit"]{
     font-size: 20px;
     margin-bottom: 5px;
 }
+
+.forms {
+    width: 50%;
+}
+
 
 /*========================================================================*/
 /*PÍSANIE BLOGU*/
@@ -781,6 +805,32 @@ textarea{
 .article-body h2{
     font-family: sans-serif;
     font-size: 18px;
+}
+
+/*===========================================================================*/
+/*EDIT PROFIL*/
+
+#text-about{
+    width: 100%;
+    border-color: #2691d9;
+    height: 16vh;
+    border-width: 2px;
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+
+.edit-skill [type="submit"] {
+    width: 39%;
+    height: 34px;
+    border: 1px solid;
+    background: #2691d9;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    margin-top: 19px;
 }
 
 /*===========================================================================================*/

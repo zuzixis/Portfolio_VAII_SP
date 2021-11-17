@@ -8,7 +8,15 @@
 
       <div class="header-title">
         <h1><?=$data['user']->getName()." ".$data['user']->getSurname()?></h1>
-        <h3><?=$data['user']->getRole()?></h3>
+          <?php if (\App\Auth::isLogged())
+          {?>
+              <?php
+              if ($_SESSION["id"] == $data['user']->getId()) {?>
+                  <div class="modify">
+                      <a id="btn-update-profil" href="?c=portfolio&a=editProfil">Všeobecné úpravy profilu</a>
+                  </div>
+              <?php }?>
+          <?php }?>
       </div>
 
     </div>
@@ -45,37 +53,50 @@
       </ul>
     </div>
   </section>
-  <section>
+    <section>
+        <div class="profil-skills">
+            <h2 class="p-subtitles">Skills</h2>
+            <ul>
+                <?php foreach ($data['skills'] as $skill) { ?>
+                    <li><img class="skill-icons" src="<?=\App\Config\Configuration::SKILLS_DIR.$skill->getImage()?>" alt="obrázok dovedomosti - skill"></li>
+                <?php }?>
+            </ul>
+            <?php if (\App\Auth::isLogged())
+            {?>
+                <?php
+                if ($_SESSION["id"] == $data['user']->getId()) {?>
+                    <div class="modify">
+                        <a id="btn-update-profil" href="?c=portfolio&a=editskills">Upraviť skilly</a>
+                    </div>
+                <?php }?>
+            <?php }?>
+        </div>
+    </section>
+    <section>
     <div class="profil-info">
       <h2 class="p-subtitles">Základné informácie</h2>
       <p>
           <?=$data['user']->getBasicInfo()?>
-
       </p>
     </div>
   </section>
   <section>
-    <div class="profil-skills">
-      <h2 class="p-subtitles">Skills</h2>
-      <ul>
-          <?php foreach ($data['skills'] as $skill) { ?>
-              <li><img class="skill-icons" src="<?=\App\Config\Configuration::SKILLS_DIR.$skill->getImage()?>" alt="obrázok dovedomosti - skill"></li>
-          <?php }?>
-      </ul>
-    </div>
-  </section>
-  <section>
     <div class="profil-blogs">
+        <?php
+        if ($data['blogs']!=null) {?>
       <h2 class="p-subtitles">Moje blogy</h2>
       <ul>
           <?php foreach ($data['blogs'] as $blog) { ?>
               <li><a href="?c=blog&a=article&id=<?=$blog->getId()?>"><?=$blog->getTitle()?></a></li>
           <?php }?>
       </ul>
+        <?php }?>
     </div>
   </section>
   <section>
     <div class="profil-portfolio">
+        <?php
+        if ($data['projects']!=null) {?>
       <h2 class="p-subtitles">Portfolio</h2>
       <div class="grid">
           <?php foreach ($data['projects'] as $project) { ?>
@@ -89,6 +110,7 @@
               </div>
               <?php }?>
         </div>
+        <?php }?>
     </div>
   </section>
 </div>

@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Auth;
 use App\Core\Responses\Response;
+use App\Models\Blog;
+use App\Models\User;
 
 class AuthController extends AControllerRedirect
 {
@@ -25,7 +27,29 @@ class AuthController extends AControllerRedirect
     }
 
     public function registration(){
-        return $this->html();
+        return $this->html(
+            [
+                'error' => $this->request()->getValue('error')
+            ]
+        );
+    }
+
+    public function addNewUser(){
+        $email = $this->request()->getValue('email');
+        $password = $this->request()->getValue('password');
+        $password_repeat = $this->request()->getValue('password-repeat');
+
+        if ($password == $password_repeat){
+            $registered = Auth::register($email,$password);
+            if ($registered){
+                $this->redirect('portfolio','editProfil');
+            }else{
+                $this->redirect('auth','registration', ['error' => \App\Config\Configuration::USER_ALREADY_EXISTS]);
+            }
+        }else{
+            $this->redirect('auth','registration', ['error' => \App\Config\Configuration::DIFFERENT_PASSWORDS]);
+        }
+
     }
 
     public function login()
@@ -38,7 +62,7 @@ class AuthController extends AControllerRedirect
         if ($logged){
             $this->redirect('home');
         }else{
-            $this->redirect('auth','loginForm', ['error' => 'Zle meno alebo heslo!']);
+            $this->redirect('auth','loginForm', ['error' => \App\Config\Configuration::ERR_LOGIN]);
         }
     }
 
@@ -46,5 +70,19 @@ class AuthController extends AControllerRedirect
     {
         Auth::logout();
         $this->redirect('home');
+    }
+
+    public function deleteProfil()
+    {
+        $user = User::getOne($_SESSION['id']);
+
+        if ($user != null){
+            $user->delete();
+        }
+
+        unset($_SESSION['id']);
+        session_destroy();
+
+        $this->redirect('home',);
     }
 }

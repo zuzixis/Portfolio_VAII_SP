@@ -16,15 +16,14 @@ class User extends Model
         public string $instagram = "",
         public string $location = "",
         public string $basic_info = "",
-        public string $role = "",
-        public string $profil_photo = ""
+        public string $profil_photo = "user.png"
     )
     {
     }
 
     static public function setDbColumns()
     {
-        return ['id', 'name','surname', 'number', 'email', 'password','facebook','instagram','location', 'basic_info','role','profil_photo'];
+        return ['id', 'name','surname', 'number', 'email', 'password','facebook','instagram','location', 'basic_info','profil_photo'];
     }
 
     static public function setTableName()
@@ -192,21 +191,6 @@ class User extends Model
         $this->basic_info = $basic_info;
     }
 
-    /**
-     * @return string
-     */
-    public function getRole(): string
-    {
-        return $this->role;
-    }
-
-    /**
-     * @param string $role
-     */
-    public function setRole(string $role): void
-    {
-        $this->role = $role;
-    }
 
     /**
      * @return string

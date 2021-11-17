@@ -41,12 +41,6 @@
                                 <div class="modify">
                                     <a class="modify-item" id="btn-update-blog" href="?c=blog&a=updateBlog&blogId=<?=$blog->getId()?>">Upraviť článok</a>
                                     <a class="modify-item" id="btn-update-blog" href="?c=blog&a=delete&blogId=<?=$blog->getId()?>">Vymazať článok</a>
-                                    <!--<form method="POST" class="modify-item">
-                                        <input type="hidden" name="id" value="<?/*= $blog->getId() */?>">
-                                        <a href="?c=blog&a=delete&blogId=<?/*=$blog->getId()*/?>">
-                                            <button id="btn-delete-blog" name="delete-blog">Vymazať článok</button>
-                                        </a>
-                                    </form>-->
                                 </div>
                             <?php }?>
                         <?php }?>

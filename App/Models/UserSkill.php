@@ -14,7 +14,7 @@ class UserSkill extends Model
 
     static public function setDbColumns()
     {
-        return ['user_id', 'skill_id'];
+        return ['id','user_id', 'skill_id'];
     }
 
     static public function setTableName()

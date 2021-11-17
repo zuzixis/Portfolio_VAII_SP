@@ -6,9 +6,13 @@
     <meta name="description" content="Blogy">
     <meta name="keywords" content="Blog">
     <meta name="author" content="Zuzana Žillová">
-    <title>Blogy</title>
+    <title>Portfolio</title>
+
     <link rel="stylesheet" href="<?=\App\Config\Configuration::STYLE?>" type="text/css">
+
     <script src="../skript/skript.js"></script>
+
+
 </head>
 <body>
 <header>

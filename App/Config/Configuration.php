@@ -26,4 +26,8 @@ class Configuration
     public const PROJECTS_DIR= 'public/files/projects/';
     public const STYLE = 'public/style.css';
 
+    public const USER_ALREADY_EXISTS = "Užívateľ so zadaným emailom už existuje!";
+    public const DIFFERENT_PASSWORDS = "Zadané heslá sa nezhodujú!";
+    public const ERR_LOGIN = "Zlý email alebo heslo!";
+
 }

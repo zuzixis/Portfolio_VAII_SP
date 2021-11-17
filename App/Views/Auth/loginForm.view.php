@@ -6,7 +6,7 @@
         <h1>Prihlásenie</h1>
         <form method="post" action="?c=auth&a=login">
             <div class="txt_field">
-                <input id="log-name" type="text" name="login" required>
+                <input id="log-name" type="email" name="login" required>
                 <span></span>
                 <label for="log-name">Email</label>
             </div>
@@ -17,8 +17,8 @@
             </div>
 
 
-            <?php if ($data['error'] != ""){?>
-                <label style="color: #202020"><?php $data['error'] ?></label>
+            <?php if ($data['error'] == \App\Config\Configuration::ERR_LOGIN){?>
+                <div class="reg-error"><?= $data['error'] ?></div>
             <?php } ?>
 
 
