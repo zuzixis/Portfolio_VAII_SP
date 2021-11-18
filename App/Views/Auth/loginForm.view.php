@@ -2,6 +2,19 @@
 
 <div>
     <img class="abstract-background" src="<?= \App\Config\Configuration::IMG_DIR."login-bg2.png"?>" alt="pozadie">
+    <?php if ($data['error'] != ""){?>
+        <div class="alert ale-err">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <?= $data['error'] ?>
+        </div>
+    <?php } ?>
+    <?php if ($data['message'] != ""){?>
+        <div class="alert ale-success">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <?= $data['message'] ?>
+        </div>
+    <?php } ?>
+
     <div class="center">
         <h1>Prihlásenie</h1>
         <form method="post" action="?c=auth&a=login">
@@ -15,13 +28,6 @@
                 <span></span>
                 <label for="log-pass">Heslo</label>
             </div>
-
-
-            <?php if ($data['error'] == \App\Config\Configuration::ERR_LOGIN){?>
-                <div class="reg-error"><?= $data['error'] ?></div>
-            <?php } ?>
-
-
             <input type="submit" value="Prihlásiť sa">
             <div class="signup_link">
                 Nie ste zaregistrovaný? <a href="?c=auth&a=registration">Zaregistrovať sa</a>

@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 
+use App\Auth;
 use App\Core\Model;
 
 
@@ -89,5 +90,29 @@ class Project extends Model
     public function setImage(string $image): void
     {
         $this->image = $image;
+    }
+
+    public static function addNewProject(string $title, string $img){
+        if (Auth::isLogged() && $_SESSION['id']>0){
+            $newProject = new Project(user_id: $_SESSION['id'],title: $title,image: $img);
+            $newProject->save();
+            return true;
+        }
+        return false;
+    }
+
+    public static function deteteProject(int $id){
+        if (Auth::isLogged() && $_SESSION['id']>0 && $id > 0){
+            $project = Project::getOne($id);
+
+            $path = \App\Config\Configuration::PROJECTS_DIR . $project->getImage();
+            if (file_exists($path)) {
+                chmod($path, 0644);
+                unlink($path);
+                $project->delete();
+            }
+            return true;
+        }
+        return false;
     }
 }

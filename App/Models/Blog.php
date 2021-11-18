@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Auth;
 use App\Core\Model;
 
 class Blog extends Model
@@ -123,5 +124,42 @@ class Blog extends Model
     public function setUserProfilPhoto(string $userProfilPhoto): void
     {
         $this->userProfilPhoto = $userProfilPhoto;
+    }
+
+    public static function createBlog(string $title, string $text)
+    {
+        if(Auth::isLogged()){
+            $newBlog = new Blog(title: $title,text: $text ,user_id: $_SESSION["id"] );
+            $newBlog->save();
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public static function updateBlog(string $title, string $text, int $id)
+    {
+        if ($id > 0){
+            if(Auth::isLogged()){
+                $blog = Blog::getOne($id);
+                $blog->setTitle($title);
+                $blog->setText($text);
+                $blog->save();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static function deleteBlog(int $id)
+    {
+        if ($id > 0){
+            if(Auth::isLogged()){
+                $blog = Blog::getOne($id);
+                $blog->delete();
+                return true;
+            }
+        }
+        return false;
     }
 }

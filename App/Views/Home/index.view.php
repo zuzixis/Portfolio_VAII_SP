@@ -1,6 +1,21 @@
+<?php /** @var Array $data */ ?>
+
 <div>
     <img class="abstract-background" src="<?= \App\Config\Configuration::IMG_DIR."login-bg2.png" ?>" alt="pozadie">
     <div>
+        <?php if ($data['error'] != ""){?>
+            <div class="alert ale-err">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <?= $data['error'] ?>
+            </div>
+        <?php } ?>
+        <?php if ($data['message'] != ""){?>
+            <div class="alert ale-success">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <?= $data['message'] ?>
+            </div>
+        <?php } ?>
+
         <div class = "main-title">
             <h1>
                 Ukáž sa <br>

@@ -1,3 +1,21 @@
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
+
+
+
+/*justify-content: right;*/
 * {
     margin: 0;
     padding: 0;
@@ -554,6 +572,24 @@ section {
     margin-top: 4px;
 }
 
+#btn-delete-profil{
+    background-color: red;
+    border-radius: 20px;
+    color: #FFF;
+    text-align: center;
+    font-family: Arial,Helvetica, sans-serif;
+    font-size: 13px;
+    padding: 6px;
+    margin-top: 4px;
+}
+
+.grid .trash{
+    width: 25px;
+    height: 25px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
 /*==========================================================================*/
 /*PRIHLASENIE SA*/
 .abstract-background{
@@ -832,6 +868,48 @@ textarea{
     outline: none;
     margin-top: 19px;
 }
+
+/*===========================================================================*/
+/*PRIDANIE PROJEKTU*/
+#addProject{
+    width: 30%;
+    height: 30px;
+    font-size: 12px;
+    margin-top: 6px;
+    margin-bottom: 10px;
+}
+
+#btn-close {
+    background: #2691d9;
+    cursor: pointer;
+    color: #FFF;
+    text-align: center;
+    font-size: 12px;
+    padding: 8px 30px 8px 30px;
+    border-radius: 25px;
+    font-family: Helvetica, sans-serif;
+}
+
+.alert {
+    padding: 7px;
+    color: white;
+    text-align: center;
+    top: 19%;
+    left: 0%;
+    right: 0%;
+    position: fixed;
+    z-index: 1;
+}
+
+.ale-err{
+    background-color: #f44336;
+}
+
+.ale-success{
+    background-color: #50c878;
+}
+
+
 
 /*===========================================================================================*/
 /*

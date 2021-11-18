@@ -15,17 +15,12 @@ class HomeController extends AControllerRedirect
 
     public function index()
     {
-        return $this->html();
+        return $this->html(
+            [
+                'error' => $this->request()->getValue('error'),
+                'message' => $this->request()->getValue('message')
+            ]
+        );
     }
 
-
-    public function readBlog(){
-        $blogId = $this->request()->getValue('blogId');
-
-        if ($blogId > 0){
-            //precitaj blog - otvoriť v
-
-        }
-        $this->redirect('home');
-    }
 }

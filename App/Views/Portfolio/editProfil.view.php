@@ -1,8 +1,13 @@
 <?php /** @var Array $data */ ?>
 
-
 <div class="blog-body registration-body">
     <section id="first-section">
+        <?php if ($data['error'] != ""){?>
+            <div class="alert ale-err">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <?= $data['error'] ?>
+            </div>
+        <?php } ?>
         <div>
             <h1>Úprava profilu</h1>
         </div>
@@ -12,13 +17,13 @@
                 <h3>Všeobecné úpravy</h3>
 
                 <div class="txt_field">
-                    <input id="reg-name" type="text" name="name" value="<?=$data['user']->getName()?>" required>
+                    <input id="reg-name" type="text" name="name" value="<?=$data['user']->getName()?>">
                     <span></span>
                     <label for="reg-name">Meno</label>
                 </div>
 
                 <div class="txt_field">
-                    <input id="reg-surname" type="text" name="surname" value="<?=$data['user']->getSurname()?>" required>
+                    <input id="reg-surname" type="text" name="surname" value="<?=$data['user']->getSurname()?>">
                     <span></span>
                     <label for="reg-surname">Priezvisko</label>
                 </div>
@@ -60,28 +65,22 @@
                 <br>
 
 
-                <!--<h3>Zmena prihlasovacích údajov</h3>
+                <h3>Zmena prihlasovacích údajov</h3>
                 <div class="modify">
-                    <a id="btn-update-profil" href="?c=auth&a=deleteProfil">Vymazať profil</a>
+                    <a id="btn-delete-profil" href="?c=auth&a=deleteProfil">Vymazať profil</a>
                 </div>
 
                 <div class="txt_field">
-                    <input id="reg-email" type="email" name="email" value="<?/*=$data['user']->getEmail()*/?>">
+                    <input id="reg-password-first" type="password" name="password-first">
                     <span></span>
-                    <label for="reg-email">Email</label>
+                    <label for="reg-password-first">Nové heslo</label>
                 </div>
 
                 <div class="txt_field">
-                    <input id="reg-parrword-first" type="password" name="parrword-first">
+                    <input id="reg-password-second" type="password" name="password-second">
                     <span></span>
-                    <label for="reg-parrword-first">Nové heslo</label>
+                    <label for="reg-password-second">Zopakujte heslo</label>
                 </div>
-
-                <div class="txt_field">
-                    <input id="reg-parrword-second" type="password" name="parrword-second">
-                    <span></span>
-                    <label for="reg-parrword-second">Zopakujte heslo</label>
-                </div>-->
 
 
 

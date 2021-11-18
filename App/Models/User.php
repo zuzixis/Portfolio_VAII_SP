@@ -1,5 +1,6 @@
 <?php
 namespace App\Models;
+use App\Auth;
 use App\Core\Model;
 
 class User extends Model
@@ -206,5 +207,33 @@ class User extends Model
     public function setProfilPhoto(string $profil_photo): void
     {
         $this->profil_photo = $profil_photo;
+    }
+
+    public static function update(
+        string $name, string $surname, string $number, string $facebook, string $instagram,
+        string $location, string $basicInfo, string $profilPhoto, string $password
+    ){
+        if (Auth::isLogged() && $_SESSION['id'] > 0){
+            $user = User::getOne($_SESSION['id']);
+
+            $user->setName($name);
+            $user->setSurname($surname);
+            $user->setNumber($number);
+            $user->setFacebook($facebook);
+            $user->setInstagram($instagram);
+            $user->setLocation($location);
+            $user->setBasicInfo($basicInfo);
+            $user->setPassword($password);
+
+            if ($profilPhoto != ""){
+                $user->setProfilPhoto($profilPhoto);
+            }
+
+            $user->save();
+
+            return true;
+        }
+
+        return false;
     }
 }

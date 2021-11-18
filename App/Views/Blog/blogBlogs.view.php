@@ -2,6 +2,18 @@
 
 <div class="blog-body">
     <section id="first-section">
+        <?php if ($data['error'] != ""){?>
+            <div class="alert ale-err">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <?= $data['error'] ?>
+            </div>
+        <?php } ?>
+        <?php if ($data['message'] != ""){?>
+            <div class="alert ale-success">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <?= $data['message'] ?>
+            </div>
+        <?php } ?>
         <div>
             <h1>Blogy</h1>
             <nav>

@@ -2,7 +2,10 @@
 
 namespace App;
 
+use App\Models\Blog;
+use App\Models\Project;
 use App\Models\User;
+use App\Models\UserSkill;
 
 class Auth
 {
@@ -47,6 +50,56 @@ class Auth
             $newUser = new User(email: $email, password: $password );
             $newUser->save();
             self::login($email,$password);
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+    public static function deleteProfil()
+    {
+        $found = User::getOne($_SESSION['id']);
+        if ($found != null){
+            //vymazenie všetkého čo user môže mať vytvorené
+            //vymazanie blogov
+            $blogs = Blog::getAll("user_id=".$found->getId());
+            foreach ($blogs as $blog){
+                $blog->delete();
+            }
+
+            //vymazanie projektov
+            $projects = Project::getAll("user_id=".$found->getId());
+            foreach ($projects as $project){
+                $path = \App\Config\Configuration::PROJECTS_DIR . $project->getImage();
+                if (file_exists($path)) {
+                    chmod($path, 0644);
+                    unlink($path);
+                }
+                $project->delete();
+            }
+
+            //vymazanie skillov
+            $skills = UserSkill::getAll("user_id=".$found->getId());
+            foreach ($skills as $skill){
+                $skill->delete();
+            }
+
+            //odhlásenie sa
+            self::logout();
+
+            //vymaanie usera
+
+            if ($found->getProfilPhoto() != \App\Config\Configuration::PROFIL_DEFAULT_PHOTO){
+                $path = \App\Config\Configuration::PROFIL_PHOTO_DIR . $found->getProfilPhoto();
+                if (file_exists($path)) {
+                    chmod($path, 0644);
+                    unlink($path);
+                }
+            }
+
+            $found->delete();
+
             return true;
         }else{
             return false;

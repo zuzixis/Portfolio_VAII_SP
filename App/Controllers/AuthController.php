@@ -74,15 +74,13 @@ class AuthController extends AControllerRedirect
 
     public function deleteProfil()
     {
-        $user = User::getOne($_SESSION['id']);
-
-        if ($user != null){
-            $user->delete();
+        if (Auth::isLogged()) {
+            if (Auth::deleteProfil()){
+                $this->redirect('home','index', ['message' => \App\Config\Configuration::SUCCESSFULLY_DELETED_PROFIL]);
+            }else{
+                $this->redirect('home','index', ['error' => \App\Config\Configuration::ERR_DELETING_PROFIL]);
+            }
         }
-
-        unset($_SESSION['id']);
-        session_destroy();
-
-        $this->redirect('home',);
     }
+
 }

@@ -42,7 +42,9 @@ class BlogController extends AControllerRedirect
 
         return $this->html(
             [
-                'blogs' => $blogs
+                'blogs' => $blogs,
+                'error' => $this->request()->getValue('error'),
+                'message' => $this->request()->getValue('message')
             ]);
     }
 
@@ -74,32 +76,38 @@ class BlogController extends AControllerRedirect
         $title = $this->request()->getValue('title');
         $text = $this->request()->getValue('text');
 
-        $newBlog = new Blog(title: $title,text: $text ,user_id: $_SESSION["id"] );
-        $newBlog->save();
+        if (Blog::createBlog($title,$text)){
+            $this->redirect('blog','blogBlogs', ['message' => \App\Config\Configuration::SUCCESSFULLY_CREATED_BLOG]);
+        }else{
+            $this->redirect('blog','blogBlogs', ['error' => \App\Config\Configuration::ERR_CREATING_BLOG]);
+        }
 
-        $this->redirect('blog','blogBlogs');
     }
 
     public function update(){
         $title = $this->request()->getValue('title');
         $text = $this->request()->getValue('text');
         $id = $this->request()->getValue('id');
-        $blog = Blog::getOne($id);
-        $blog->setTitle($title);
-        $blog->setText($text);
-        $blog->save();
-        $this->redirect('blog','blogBlogs');
+
+        if (Blog::updateBlog($title,$text,$id)){
+            $this->redirect('blog','blogBlogs', ['message' => \App\Config\Configuration::SUCCESSFULLY_UPDATED_BLOG]);
+        }else{
+            $this->redirect('blog','blogBlogs', ['error' => \App\Config\Configuration::ERR_UPDATING_BLOG]);
+        }
+
     }
 
     public function delete(){
         $id = $this->request()->getValue('blogId');
         $blog = Blog::getOne($id);
 
-        if ($blog != null){
-            $blog->delete();
+        if ($id > 0){
+            if (Blog::deleteBlog($id)){
+                $this->redirect('blog','blogBlogs', ['message' => \App\Config\Configuration::SUCCESSFULLY_DELETED_BLOG]);
+            }else{
+                $this->redirect('blog','blogBlogs', ['error' => \App\Config\Configuration::ERR_DELETING_BLOG]);
+            }
         }
-
-        $this->redirect('blog','blogBlogs');
     }
 
 
