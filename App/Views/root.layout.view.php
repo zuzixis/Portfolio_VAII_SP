@@ -51,9 +51,10 @@
             <img class="btn-menu" onclick="openCloseNav()" src="<?=\App\Config\Configuration::IMG_DIR."menu.png"?>" alt="menu">
 
             <ul id="menu-items">
-                <li class="active"><a href="?c=home&a=index">Domov</a></li>
-                <li class=""><a href="?c=blog&a=blogBlogs">Blog</a></li>
-                <li class=""><a href="?c=portfolio&a=portfolios">Portfóliá</a></li>
+
+                <li><a class="<?= $_GET["c"] == "home" ? "active" : "" ?>" href="?c=home&a=index">Domov</a></li>
+                <li><a class="<?= $_GET["c"] == "blog" ? "active" : "" ?>" href="?c=blog&a=blogBlogs">Blog</a></li>
+                <li><a class="<?= $_GET["c"] == "portfolio" ? "active" : "" ?> " href="?c=portfolio&a=portfolios">Portfóliá</a></li>
 
                 <?php
                 if (\App\Auth::isLogged())

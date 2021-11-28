@@ -6,7 +6,7 @@
       <h1>Úprava blogu...</h1>
       <nav>
         <ul>
-          <li class="no-active">
+          <li>
             <a id="btn-new-blog" href="?c=blog&a=blogBlogs">Zrušiť</a>
           </li>
         </ul>
@@ -20,7 +20,7 @@
                       <h1>Načítaný článok</h1>
                       <label>Nadpis</label>
                       <div class="txt_field">
-                          <textarea id="create-title" rows="6" cols="48" name="title"><?=$data['blog']->getTitle()?></textarea>
+                          <textarea id="create-title" rows="3" cols="48" name="title"><?=$data['blog']->getTitle()?></textarea>
                           <span></span>
                       </div>
                   </div>

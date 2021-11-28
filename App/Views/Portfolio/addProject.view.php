@@ -5,7 +5,7 @@
 
         <h1>Pridávanie nových projektov</h1>
 
-        <div>
+        <div class="add-project-body">
             <?php if ($data['error'] != ""){?>
                 <div class="alert ale-err">
                     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
@@ -28,7 +28,7 @@
                 </div>
                 <input type="file" id="project" name="project" accept="image/*" required><br>
                 <input id="addProject" type="submit" value="Pridať projekt">
-                <a id="btn-close" href="?c=portfolio&a=profil&userId=<?= $_SESSION['id']?>">Ukončiť pridávanie </a>
+                <a id="btn-close" href="?c=portfolio&a=profil&userId=<?/*= $_SESSION['id']*/?>">Ukončiť pridávanie </a>
             </form>
         </div>
         <?php if ($data['error'] == \App\Config\Configuration::ERR_PROJECT){?>

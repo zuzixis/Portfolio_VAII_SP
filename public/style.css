@@ -1,3 +1,5 @@
+
+
 .closebtn {
     margin-left: 15px;
     color: white;
@@ -14,7 +16,7 @@
 }
 
 .tit{
-    margin: 10px;
+    margin: 1% 0 1% 0;
 }
 /*justify-content: right;*/
 
@@ -123,22 +125,20 @@ a{
     margin-right: 25px;
 }
 
+
+
 .main-menu li a {
     color: #FFFFFF;
 }
 
-/*.main-menu li:not(.no-active):hover::before, .main-menu li.active::before {
-    background-image: url(files/img/menu-arrow.png);
-    background-repeat: no-repeat;
-    background-size: 15px 15px;
-    display: block;
-    height: 10px;
-    padding-bottom: 10px;
-    background-position-x: center;
-    content: "";
-    color: #0E78AD;
-}*/
+li a:hover{
+    color: #1193D6;
+}
 
+li a.active{
+    color: #1193D6;
+    text-decoration: underline;
+}
 
 #btn-login {
     background-color: #1193D6;
@@ -325,19 +325,8 @@ footer{
 }
 
 .blog-body li a, .contact a {
-    color: #000;
+    /*color: #000;*/
 }
-
-/*.blog-body li:not(.no-active):hover::before, .blog-body li.active::before {
-    background-image: url(files/img/menu-arrow.png);
-    background-repeat: no-repeat;
-    background-size: 15px 15px;
-    display: block;
-    height: 10px;
-    padding-bottom: 10px;
-    background-position-x: center;
-    content: "";
-}*/
 
 #btn-new-blog {
     background-color: #1193D6;
@@ -606,7 +595,7 @@ section {
 
 .center{
     position: absolute;
-    top: 58%;
+    top: 50%;
     left: 56%;
     transform: translate(-50%,-50%);
     width: 400px;
@@ -761,9 +750,19 @@ input[type="submit"]{
     padding-right: 20px;
 }
 
+#btn-cancel-creating-blog {
+    background-color: #1193D6;
+    border-radius: 15px;
+    color: #FFF;
+    font-size: 14px;
+    padding: 3px 15px 3px 15px;
+}
+
+
+
 .blog-body-create .center{
     position: absolute;
-    top: 550px;
+    top: 62%;
     left: 57%;
     width: 63%;
     border-radius: 10px;
@@ -819,6 +818,7 @@ input[type="submit"]{
 textarea{
     font-family:Arial,sans-serif;
     font-size: 14px;
+    resize: none;
 }
 
 .blog-body-create label{
@@ -832,6 +832,11 @@ textarea{
     height: 38px;
     font-size: 16px;
     margin-top: 13px;
+}
+
+#create-title{
+    width: 98%;
+    border-color: #2691d9;
 }
 
 /*===========================================================================*/
@@ -913,6 +918,8 @@ textarea{
 .ale-success{
     background-color: #50c878;
 }
+
+
 
 
 
@@ -1094,7 +1101,6 @@ textarea{
     }
 
     .blog-body-create .center{
-        top: 680px;
         left: 60%;
         margin: 0;
     }
@@ -1130,6 +1136,10 @@ textarea{
     .blog-body-create label {
         font-size: 14px;
         margin-right: 15%;
+    }
+
+    #create-blog-text{
+        height: 35vh;
     }
 
     /*REGISTRÁCIA*/
@@ -1303,10 +1313,10 @@ textarea{
         font-size: 12px;
     }
 
-    .blog-body li:not(.no-active):hover::before, .blog-body li.active::before {
+    /*.blog-body li:not(.no-active):hover::before, .blog-body li.active::before {
         background-size: 10px 10px;
         height: 10px;
-    }
+    }*/
 
     #btn-new-blog {
         font-size: 12px;
@@ -1343,7 +1353,7 @@ textarea{
 
     /*PRIHLÁSENIE*/
     .center{
-        top: 33%;
+        /*top: 33%;*/
         width: 200px;
         left: 61%;
     }
@@ -1357,9 +1367,9 @@ textarea{
         padding: 0 10px;
     }
 
-    form .txt_field{
+    /*form .txt_field{
         margin: 20px 0;
-    }
+    }*/
 
     .txt_field input{
         height: 22px;
@@ -1523,11 +1533,6 @@ textarea{
         padding: 0;
     }
 
-    .blog-body-create .center{
-        top: 680px;
-    }
-
-
     .blog-body-create h1{
         padding-top: 0;
     }
@@ -1546,9 +1551,14 @@ textarea{
         font-size: 12px;
     }
 
+    #create-blog-text{
+        height: 25vh;
+    }
+
     /*ČLÁNOK*/
     .article-body h2{
         font-size: 13px;
     }
 }
 /*=======================================================================*/
+

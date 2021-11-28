@@ -26,8 +26,6 @@ class Auth
         }
     }
 
-
-
     public static function isLogged(){
         return isset($_SESSION['id']);
     }

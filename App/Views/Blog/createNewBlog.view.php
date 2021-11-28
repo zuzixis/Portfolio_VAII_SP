@@ -5,11 +5,7 @@
     <div>
       <h1>Písanie blogu...</h1>
       <nav>
-        <ul>
-          <li class="no-active">
-            <a id="btn-new-blog" href="?c=blog&a=blogBlogs">Zrušiť</a>
-          </li>
-        </ul>
+          <a id="btn-cancel-creating-blog" href="?c=blog&a=blogBlogs">Zrušiť</a>
       </nav>
     </div>
   </section>
@@ -18,16 +14,17 @@
     <div class="center">
       <div class="left-side">
         <h1>Nový článok</h1>
+          <label for="create-title">Nadpis</label>
           <div class="txt_field">
-            <input id="create-title" type="text" name="title" required>
-            <span></span>
-            <label for="create-title">Nadpis</label>
+
+              <textarea id="create-title" rows="3" cols="48" name="title" required></textarea>
+
           </div>
       </div>
       <div class="right-side">
           <div>
             <label for="create-blog-text">Text:</label>
-              <textarea id="create-blog-text"  rows="11" name="text" required></textarea>
+              <textarea id="create-blog-text"  rows="25" name="text" required></textarea>
 
           </div>
           <input type="submit" value="Vytvoriť blog">

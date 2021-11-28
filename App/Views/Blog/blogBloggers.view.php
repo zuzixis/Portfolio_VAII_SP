@@ -10,7 +10,7 @@
                   <a href="?c=blog&a=blogBlogs">Blogy</a>
               </li>
               <li>
-                  <a href="?c=blog&a=blogBloggers">Zoznam blogerov</a>
+                  <a class="active" href="?c=blog&a=blogBloggers">Zoznam blogerov</a>
               </li>
               <?php
               if (\App\Auth::isLogged())

@@ -6,8 +6,8 @@
             <h1>Blogy</h1>
             <nav>
                 <ul>
-                    <li class="active">
-                        <a href="?c=blog&a=blogBlogs">Blogy</a>
+                    <li>
+                        <a class="active" href="?c=blog&a=blogBlogs">Blogy</a>
                     </li>
                     <li>
                         <a href="?c=blog&a=blogBloggers">Zoznam blogerov</a>
