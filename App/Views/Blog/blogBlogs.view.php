@@ -52,7 +52,10 @@
                             if ($_SESSION["id"] == $blog->getUserId()) {?>
                                 <div class="modify">
                                     <a class="modify-item" id="btn-update-blog" href="?c=blog&a=updateBlog&blogId=<?=$blog->getId()?>">Upraviť článok</a>
-                                    <a class="modify-item" id="btn-update-blog" href="?c=blog&a=delete&blogId=<?=$blog->getId()?>">Vymazať článok</a>
+
+                                    <a class="modify-item" onclick="confirmBlogDeletion(<?=$blog->getId()?>)" id="btn-update-blog" href="#">Vymazať článok</a>
+                                    <a href="#" id="delete-blog"></a>
+
                                 </div>
                             <?php }?>
                         <?php }?>

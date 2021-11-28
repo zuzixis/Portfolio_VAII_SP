@@ -26,7 +26,7 @@ class Configuration
     public const PROFIL_DEFAULT_PHOTO = 'user.png';
     public const PROJECTS_DIR= 'public/files/projects/';
     public const STYLE = 'public/style.css';
-    public const SKRIPT = '';
+    public const SCRIPT = 'public/script.js';
 
     public const USER_ALREADY_EXISTS = "Užívateľ so zadaným emailom už existuje!";
     public const DIFFERENT_PASSWORDS = "Zadané heslá sa nezhodujú!";

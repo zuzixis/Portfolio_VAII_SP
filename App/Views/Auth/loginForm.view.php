@@ -8,12 +8,6 @@
             <?= $data['error'] ?>
         </div>
     <?php } ?>
-    <?php if ($data['message'] != ""){?>
-        <div class="alert ale-success">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            <?= $data['message'] ?>
-        </div>
-    <?php } ?>
 
     <div class="center">
         <h1>Prihlásenie</h1>

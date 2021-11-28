@@ -20,8 +20,10 @@
         <img class="profil-photo" src="<?=\App\Config\Configuration::PROFIL_PHOTO_DIR.$data['user']->getProfilPhoto()?>" alt="Profilová fotka">
 
       <div class="header-title">
-          <?php if ($data['user']->getName()!="" || $data['user']->getSurname()!="") {?>
-                <h1><?=$data['user']->getName()." ".$data['user']->getSurname()?></h1>
+          <?php if($data['user']->getName() == "" && $data['user']->getSurname() == "") { ?>
+              <h1 class="tit"><?=$data['user']->getEmail()?></h1>
+          <?php }else{?>
+              <h1 class="tit"><?=$data['user']->getName()." ".$data['user']->getSurname()?></h1>
           <?php }?>
 
           <?php if (\App\Auth::isLogged())
@@ -83,13 +85,16 @@
   </section>
     <section>
         <div class="profil-skills">
-            <?php if ($data['skills'] != null) {?>
-            <h2 class="p-subtitles">Skills</h2>
+            <?php if ($data['skills'] != null ) {?>
             <ul>
                 <?php foreach ($data['skills'] as $skill) { ?>
                     <li><img class="skill-icons" src="<?=\App\Config\Configuration::SKILLS_DIR.$skill->getImage()?>" alt="obrázok dovedomosti - skill"></li>
                 <?php }?>
             </ul>
+            <?php }else {?>
+                <?php if (\App\Auth::isLogged() && $_SESSION["id"] == $data['user']->getId()) {?>
+                    <h2 class="p-subtitles">Skills</h2>
+                <?php }?>
             <?php }?>
 
             <?php if (\App\Auth::isLogged())
@@ -134,27 +139,22 @@
       <div class="grid">
           <?php foreach ($data['projects'] as $project) { ?>
               <div class="grid-item">
+                  <?php if (\App\Auth::isLogged())
+                  {?>
+                      <?php
+                      if ($_SESSION["id"] == $data['user']->getId()) {?>
+                          <a href="?c=portfolio&a=deleteProject&id=<?= $project->getId(); ?>">
+                              <img class="trash" src="<?=\App\Config\Configuration::IMG_DIR."cancel.png"?>">
+                          </a>
+                      <?php }?>
+                  <?php }?>
                   <img src="<?=\App\Config\Configuration::PROJECTS_DIR.$project->getImage()?>" alt="tetris">
                   <div class="detail-grid-item">
                       <p>
                           <?=$project->getTitle()?>
                       </p>
-
-                      <?php if (\App\Auth::isLogged())
-                      {?>
-                          <?php
-                          if ($_SESSION["id"] == $data['user']->getId()) {?>
-                              <div class="modify">
-                                  <!--<a id="btn-update-profil" href="?c=portfolio&a=addProject">Vymazať</a>-->
-                                  <!--<img class="trash" src="<?/*=\App\Config\Configuration::IMG_DIR."delete.png"*/?>">-->
-                              </div>
-                          <?php }?>
-                      <?php }?>
-
                   </div>
-                  <a href="?c=portfolio&a=deleteProject&id=<?= $project->getId(); ?>">
-                      <img class="trash" src="<?=\App\Config\Configuration::IMG_DIR."delete.png"?>">
-                  </a>
+
               </div>
               <?php }?>
         </div>
@@ -168,9 +168,6 @@
                 </div>
             <?php }?>
         <?php }?>
-
-
-
     </div>
   </section>
 </div>

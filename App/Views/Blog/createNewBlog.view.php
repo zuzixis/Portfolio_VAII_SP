@@ -27,8 +27,8 @@
       <div class="right-side">
           <div>
             <label for="create-blog-text">Text:</label>
-            <textarea id="create-blog-text"  rows="10" cols="10" name="text">
-            </textarea>
+              <textarea id="create-blog-text"  rows="11" name="text" required></textarea>
+
           </div>
           <input type="submit" value="Vytvoriť blog">
       </div>

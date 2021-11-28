@@ -10,8 +10,8 @@
 
     <link rel="stylesheet" href="<?=\App\Config\Configuration::STYLE?>" type="text/css">
 
-    <script src="../skript/skript.js"></script>
-
+    <script src="<?=\App\Config\Configuration::SCRIPT?>"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
 <body>
@@ -19,7 +19,9 @@
     <div class="menu">
         <div class="left-blue-area">
             <div class="left-blue-background "></div>
-            <img id="logo-icon" src="<?=\App\Config\Configuration::IMG_DIR."portfolio.png"?>" alt="Logo">
+            <a href="?c=home&a=index">
+                <img id="logo-icon" src="<?=\App\Config\Configuration::IMG_DIR."portfolio.png"?>" alt="Logo">
+            </a>
             <ul>
                 <li>
                     <a href="tel:+421910117452" >
@@ -49,9 +51,9 @@
             <img class="btn-menu" onclick="openCloseNav()" src="<?=\App\Config\Configuration::IMG_DIR."menu.png"?>" alt="menu">
 
             <ul id="menu-items">
-                <li><a href="?c=home&a=index">Domov</a></li>
-                <li class="active"><a href="?c=blog&a=blogBlogs">Blog</a></li>
-                <li><a href="?c=portfolio&a=portfolios">Portfóliá</a></li>
+                <li class="active"><a href="?c=home&a=index">Domov</a></li>
+                <li class=""><a href="?c=blog&a=blogBlogs">Blog</a></li>
+                <li class=""><a href="?c=portfolio&a=portfolios">Portfóliá</a></li>
 
                 <?php
                 if (\App\Auth::isLogged())
@@ -59,9 +61,8 @@
                     <li class="no-active"><a id="btn-login" href="?c=auth&a=logout">Odhlásiť sa</a></li>
                 <?php
                 }else{?>
-                    <li><a id="btn-login" href="<?= \App\Config\Configuration::LOGIN_URL ?>">Prihlásenie</a></li>
+                    <li class="no-active"><a id="btn-login" href="<?= \App\Config\Configuration::LOGIN_URL ?>">Prihlásenie</a></li>
                 <?php }?>
-
 
             </ul>
         </nav>

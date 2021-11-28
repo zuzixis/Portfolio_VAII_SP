@@ -36,8 +36,8 @@ class AuthController extends AControllerRedirect
 
     public function addNewUser(){
         $email = $this->request()->getValue('email');
-        $password = $this->request()->getValue('password');
-        $password_repeat = $this->request()->getValue('password-repeat');
+        $password = $this->request()->getValue('password-first');
+        $password_repeat = $this->request()->getValue('password-second');
 
         if ($password == $password_repeat){
             $registered = Auth::register($email,$password);

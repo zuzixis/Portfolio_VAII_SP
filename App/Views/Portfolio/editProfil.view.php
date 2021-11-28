@@ -67,11 +67,15 @@
 
                 <h3>Zmena prihlasovacích údajov</h3>
                 <div class="modify">
-                    <a id="btn-delete-profil" href="?c=auth&a=deleteProfil">Vymazať profil</a>
+                    <a id="btn-delete-profil" href="#" onclick="confirmProfileDeletion()">Vymazať profil</a>
+                    <a id="delete-prof" href="?c=auth&a=deleteProfil"></a>
                 </div>
 
                 <div class="txt_field">
-                    <input id="reg-password-first" type="password" name="password-first">
+                    <input id="reg-password-first" oninput="checkPassword()"
+                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                           title="Heslo musí obsahovať aspoň 8 znakov, aspoň jedno veľké písmeno, aspoň jedno malé písmeno a aspoň jedno číslo"
+                           type="password" name="password-first">
                     <span></span>
                     <label for="reg-password-first">Nové heslo</label>
                 </div>
@@ -79,10 +83,10 @@
                 <div class="txt_field">
                     <input id="reg-password-second" type="password" name="password-second">
                     <span></span>
-                    <label for="reg-password-second">Zopakujte heslo</label>
+                    <label for="reg-password-second" >Zopakujte heslo</label>
                 </div>
 
-
+                <div class="reg-error" id="err-title"></div>
 
                 <input type="submit" value="Potvrdiť zmeny">
 

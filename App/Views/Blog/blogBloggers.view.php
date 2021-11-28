@@ -28,7 +28,16 @@
 
     <div class = "blogger-box">
       <img src="<?= \App\Config\Configuration::PROFIL_PHOTO_DIR.$blogger->getProfilPhoto()?>" alt="Fotka profilu">
-      <a href="?c=portfolio&a=profil&userId=<?=$blogger->getId()?>"><h3><?=$blogger->getName()." ".$blogger->getSurname()?></h3></a>
+        <?php if($blogger->getName() == "" && $blogger->getSurname() == "") { ?>
+            <a href="?c=portfolio&a=profil&userId=<?=$blogger->getId()?>">
+                <h3 class="tit"><?=$blogger->getEmail()?></h3>
+            </a>
+        <?php }else{?>
+            <a href="?c=portfolio&a=profil&userId=<?=$blogger->getId()?>">
+                <h3 class="tit"><?=$blogger->getName()." ".$blogger->getSurname()?></h3>
+            </a>
+        <?php }?>
+
       <p>
           <?=$out = strlen($blogger->getBasicInfo()) > 200 ? substr($blogger->getBasicInfo(),0,200)."..." : $blogger->getBasicInfo();?>
       </p>

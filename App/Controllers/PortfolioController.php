@@ -24,10 +24,16 @@ class PortfolioController extends AControllerRedirect
 
     public function portfolios(){
         $users = User::getAll();
+        $user = null;
+
+        if (Auth::isLogged()){
+            $user = User::getOne($_SESSION['id']);
+        }
 
         return $this->html(
             [
-                'users' => $users
+                'users' => $users,
+                'user'=> $user
             ]);
     }
 
@@ -136,8 +142,6 @@ class PortfolioController extends AControllerRedirect
                     'error' => \App\Config\Configuration::DIFFERENT_PASSWORDS
                 ] );
         }
-
-
     }
 
     public function addSkills(){

@@ -27,18 +27,27 @@
                 <img src="<?=\App\Config\Configuration::PROFIL_PHOTO_DIR.$data['user']->getProfilPhoto()?>" alt="Fotko autora">
                 <div class="info">
                     <h3><?=$data['blog']->getTitle()?></h3>
+                    <?php if($data['user']->getName() == "" && $data['user']->getSurname() == "") { ?>
                     <a href="?c=portfolio&a=profil&userId=<?=$data['blog']->getUserId()?>">
-                        <h4><?=$data['user']->getName()." ".$data['user']->getSurname()?></h4>
+                        <h4 class="tit"><?=$data['user']->getEmail()?></h4>
                     </a>
+                    <?php }else{?>
+                        <a href="?c=portfolio&a=profil&userId=<?=$data['blog']->getUserId()?>">
+                            <h4 class="tit"><?=$data['user']->getName()." ".$data['user']->getSurname()?></h4>
+                        </a>
+                    <?php }?>
+
+
                 </div>
             </div>
         </div>
     </section>
     <section>
          <div class="blogger-box-article blogger-box">
-
              <p>
-                 <?=$data['blog']->getText()?>
+             <?php
+                echo nl2br($data['blog']->getText());
+             ?>
              </p>
          </div>
     </section>

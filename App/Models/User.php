@@ -223,9 +223,20 @@ class User extends Model
             $user->setInstagram($instagram);
             $user->setLocation($location);
             $user->setBasicInfo($basicInfo);
-            $user->setPassword($password);
+
+            if($password != ""){
+                $user->setPassword($password);
+            }
 
             if ($profilPhoto != ""){
+                if ($user->getProfilPhoto() != \App\Config\Configuration::PROFIL_DEFAULT_PHOTO){
+                    $path = \App\Config\Configuration::PROFIL_PHOTO_DIR . $user->getProfilPhoto();
+                    if (file_exists($path)) {
+                        chmod($path, 0644);
+                        unlink($path);
+                    }
+                    $user->setProfilPhoto($profilPhoto);
+                }
                 $user->setProfilPhoto($profilPhoto);
             }
 
