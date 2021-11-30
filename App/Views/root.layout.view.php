@@ -52,9 +52,11 @@
 
             <ul id="menu-items">
 
-                <li><a class="<?= $_GET["c"] == "home" ? "active" : "" ?>" href="?c=home&a=index">Domov</a></li>
-                <li><a class="<?= $_GET["c"] == "blog" ? "active" : "" ?>" href="?c=blog&a=blogBlogs">Blog</a></li>
-                <li><a class="<?= $_GET["c"] == "portfolio" ? "active" : "" ?> " href="?c=portfolio&a=portfolios">Portfóliá</a></li>
+
+                <li><a class="<?= !isset($_GET['c'])||$_GET["c"] == "home" ? "active" : "" ?>" href="?c=home&a=index">Domov</a></li>
+                <li><a class="<?= isset($_GET['c'])&&$_GET["c"] == "blog" ? "active" : "" ?>" href="?c=blog&a=blogBlogs">Blog</a></li>
+                <li><a class="<?= isset($_GET['c'])&&$_GET["c"] == "portfolio" ? "active" : "" ?> " href="?c=portfolio&a=portfolios">Portfóliá</a></li>
+
 
                 <?php
                 if (\App\Auth::isLogged())

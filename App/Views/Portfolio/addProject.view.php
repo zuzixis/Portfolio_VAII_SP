@@ -28,7 +28,7 @@
                 </div>
                 <input type="file" id="project" name="project" accept="image/*" required><br>
                 <input id="addProject" type="submit" value="Pridať projekt">
-                <a id="btn-close" href="?c=portfolio&a=profil&userId=<?/*= $_SESSION['id']*/?>">Ukončiť pridávanie </a>
+                <a id="btn-close" href="?c=portfolio&a=profil&userId=<?= $_SESSION['id']?>">Ukončiť pridávanie </a>
             </form>
         </div>
         <?php if ($data['error'] == \App\Config\Configuration::ERR_PROJECT){?>

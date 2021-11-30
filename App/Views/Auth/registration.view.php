@@ -23,13 +23,13 @@
                 <input id="reg-password-first" oninput="checkPassword()"
                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                        title="Heslo musí obsahovať aspoň 8 znakov, aspoň jedno veľké písmeno, aspoň jedno malé písmeno a aspoň jedno číslo"
-                       type="password" name="password-first">
+                       type="password" name="password-first" required>
                 <span></span>
                 <label for="reg-password-first">Nové heslo</label>
             </div>
 
             <div class="txt_field">
-                <input id="reg-password-second" type="password" name="password-second">
+                <input id="reg-password-second" type="password" name="password-second" required>
                 <span></span>
                 <label for="reg-password-second" >Zopakujte heslo</label>
             </div>
