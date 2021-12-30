@@ -1,17 +1,21 @@
 <?php /** @var Array $data */ ?>
 
-<div class="blog-body">
+<div class="blog-body notification">
     <section id="first-section">
         <?php if ($data['error'] != ""){?>
             <div class="alert ale-err">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                <?= $data['error'] ?>
+                <p>
+                    <?= $data['error'] ?>
+                </p>
             </div>
         <?php } ?>
         <?php if ($data['message'] != ""){?>
             <div class="alert ale-success">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                <?= $data['message'] ?>
+                <p>
+                    <?= $data['message'] ?>
+                </p>
             </div>
         <?php } ?>
         <div>

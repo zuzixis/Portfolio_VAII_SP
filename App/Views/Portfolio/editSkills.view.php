@@ -15,7 +15,7 @@
                     <input type="checkbox" id="skill-<?= $skill->getId() ?>" name="<?= $skill->getId() ?>" value="<?= $skill->getId() ?>">
                     <label for="skill-<?= $skill->getId() ?>"><?= $skill->getName() ?></label><br>
                 <?php } ?>
-                <input type="submit" value="Potvrdiť zmeny">
+                <input type="submit" value="Uložiť">
 
             </form>
 

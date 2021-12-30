@@ -10,6 +10,7 @@ use App\Models\Project;
 use App\Models\Skill;
 use App\Models\User;
 use App\Models\UserSkill;
+use App\Models\File;
 
 class PortfolioController extends AControllerRedirect
 {
@@ -71,6 +72,7 @@ class PortfolioController extends AControllerRedirect
             $skills = Skill::getAll("id in(SELECT skill_id FROM user_skills WHERE user_id = $userId )");
             $blogs = Blog::getAll("user_id = $userId");
             $projects = Project::getAll("user_id = $userId");
+            $files = File::getAll("user_id = $userId");
 
             return $this->html(
                 [
@@ -78,6 +80,7 @@ class PortfolioController extends AControllerRedirect
                     'skills' => $skills,
                     'blogs' => $blogs,
                     'projects' => $projects,
+                    'files'=> $files,
                     'error' => $this->request()->getValue('error'),
                     'message' => $this->request()->getValue('message')
                 ]);
@@ -85,6 +88,20 @@ class PortfolioController extends AControllerRedirect
     }
 
     public function addProject()
+    {
+        if (Auth::isLogged()){
+            return $this->html(
+                [
+                    'error' => $this->request()->getValue('error'),
+                    'message' => $this->request()->getValue('message')
+                ]
+            );
+        }else{
+            $this->redirect('home' );
+        }
+    }
+
+    public function addNewFile()
     {
         if (Auth::isLogged()){
             return $this->html(
@@ -201,6 +218,40 @@ class PortfolioController extends AControllerRedirect
                 $this->redirect('portfolio','addProject' ,
                     [
                         'error' => \App\Config\Configuration::ERR_ADDING_PROJECT
+                    ]);
+            }
+
+        }else{
+            $this->redirect('home' );
+        }
+
+    }
+
+    public function addFile()
+    {
+        if (Auth::isLogged()){
+            $title = $this->request()->getValue('title');
+
+            if ($_FILES['project']['error'] == UPLOAD_ERR_OK) {
+                $file = date("Y-m-d-H-m-s_").$_FILES['project']['name'];
+                $path = \App\Config\Configuration::FILES_DIR.$file;
+                move_uploaded_file($_FILES['project']['tmp_name'], $path);
+                if (File::addNewFile($title,$file)){
+                    $this->redirect('portfolio','addNewFile' ,
+                        [
+                            'message' => \App\Config\Configuration::SUCCESSFULLY_ADDED_FILE
+                        ]);
+                }else{
+                    $this->redirect('portfolio','addNewFile' ,
+                        [
+                            'error' => \App\Config\Configuration::ERR_ADDING_FILE
+                        ]);
+                }
+
+            }else{
+                $this->redirect('portfolio','addNewFile' ,
+                    [
+                        'error' => \App\Config\Configuration::ERR_ADDING_FILE
                     ]);
             }
 

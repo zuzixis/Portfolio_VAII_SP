@@ -1,11 +1,13 @@
 <?php /** @var Array $data */ ?>
 
-<div>
+<div class="notification">
     <img class="abstract-background" src="<?= \App\Config\Configuration::IMG_DIR."login-bg2.png"?>" alt="pozadie">
     <?php if ($data['error'] != ""){?>
         <div class="alert ale-err">
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            <?= $data['error'] ?>
+            <p>
+                <?= $data['error'] ?>
+            </p>
         </div>
     <?php } ?>
 

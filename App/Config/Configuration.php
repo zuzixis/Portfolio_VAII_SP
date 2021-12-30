@@ -25,6 +25,7 @@ class Configuration
     public const PROFIL_PHOTO_DIR = 'public/files/profil_photos/';
     public const PROFIL_DEFAULT_PHOTO = 'user.png';
     public const PROJECTS_DIR= 'public/files/projects/';
+    public const FILES_DIR= 'public/files/file/';
     public const STYLE = 'public/style.css';
     public const SCRIPT = 'public/script.js';
 
@@ -56,6 +57,9 @@ class Configuration
 
     public const SUCCESSFULLY_DELETED_PROJECT = "Projekt sa úspešne vymazal z portfólia.";
     public const ERR_DElETING_PROJECT = "Pri vymazávaní projektu nastala chyba!";
+
+    public const SUCCESSFULLY_ADDED_FILE = "Súbor sa úspešne pridal do portfólia.";
+    public const ERR_ADDING_FILE = "Pri načítaní nastala chyba!";
 
 
 }

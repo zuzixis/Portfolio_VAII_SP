@@ -1,17 +1,19 @@
 <?php /** @var Array $data */ ?>
 
-<div class="blog-body registration-body">
+<div class="blog-body registration-body edit-profil notification">
     <section id="first-section">
         <?php if ($data['error'] != ""){?>
             <div class="alert ale-err">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                <?= $data['error'] ?>
+                <p>
+                    <?= $data['error'] ?>
+                </p>
             </div>
         <?php } ?>
         <div>
             <h1>Úprava profilu</h1>
         </div>
-        <div class="forms">
+        <div class="forms" >
             <form method="post" action="?c=portfolio&a=update" enctype="multipart/form-data">
                 <br>
                 <h3>Všeobecné úpravy</h3>
@@ -53,11 +55,11 @@
                 </div>
 
 
-                <label for="text-about">Krátky textík o sebe</label>
+                <label class="label-edit-profil" for="text-about">Krátky textík o sebe</label>
 
                 <textarea id="text-about"  rows="5" name="basicInfo"><?=$data['user']->getBasicInfo()?></textarea>
 
-                <span>Nahratie profilovej fotky</span>
+                <span class="label-edit-profil">Nahratie profilovej fotky</span>
                 <br>
                 <input type="file" id="profil-photo" name="profil-photo" accept="image/*">
 

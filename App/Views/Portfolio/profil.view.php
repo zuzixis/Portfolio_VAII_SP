@@ -1,17 +1,21 @@
 <?php /** @var Array $data */ ?>
 
-<div class="profil-body">
+<div class="profil-body notification">
   <section id="first-section">
       <?php if ($data['error'] != ""){?>
           <div class="alert ale-err">
               <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-              <?= $data['error'] ?>
+              <p>
+                  <?= $data['error'] ?>
+              </p>
           </div>
       <?php } ?>
       <?php if ($data['message'] != ""){?>
           <div class="alert ale-success">
               <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-              <?= $data['message'] ?>
+              <p>
+                  <?= $data['message'] ?>
+              </p>
           </div>
       <?php } ?>
 
@@ -87,6 +91,7 @@
         <div class="profil-skills">
             <?php if ($data['skills'] != null ) {?>
             <ul>
+                <h2 class="p-subtitles">Skills</h2>
                 <?php foreach ($data['skills'] as $skill) { ?>
                     <li><img class="skill-icons" src="<?=\App\Config\Configuration::SKILLS_DIR.$skill->getImage()?>" alt="obrázok dovedomosti - skill"></li>
                 <?php }?>
@@ -96,7 +101,6 @@
                     <h2 class="p-subtitles">Skills</h2>
                 <?php }?>
             <?php }?>
-
             <?php if (\App\Auth::isLogged())
             {?>
                 <?php
@@ -133,9 +137,33 @@
     </div>
   </section>
   <section>
+      <div class="profil-blogs">
+          <?php
+          if ($data['files']!=null) {?>
+              <h2 class="p-subtitles">Moje zdieľané súbory</h2>
+              <ul>
+                  <?php foreach ($data['files'] as $file) { ?>
+                      <li><a href="<?=\App\Config\Configuration::FILES_DIR.$file->getFile()?>" download="<?=$file->getTitle()?>"><?=$file->getTitle()?></a></li>
+                  <?php }?>
+              </ul>
+          <?php }?>
+          <?php if (\App\Auth::isLogged())
+          {?>
+              <?php
+              if ($_SESSION["id"] == $data['user']->getId()) {?>
+                  <div class="modify">
+                      <a id="btn-update-profil" href="?c=portfolio&a=addNewFile">Pridať nové odkazy</a>
+                  </div>
+              <?php }?>
+          <?php }?>
+      </div>
+  </section>
+  <section>
     <div class="profil-portfolio">
 
+        <?php if ($data['projects'] != null || (\App\Auth::isLogged() && $_SESSION["id"] == $data['user']->getId()) ) {?>
       <h2 class="p-subtitles">Portfolio</h2>
+        <?php }?>
       <div class="grid">
           <?php foreach ($data['projects'] as $project) { ?>
               <div class="grid-item">

@@ -12,15 +12,20 @@ class Auth
     public static function login($login, $password)
     {
 
-        $found = User::getAll('email like "'.$login.'" AND password like "'.$password.'"');
+        //$found = User::getAll('email like "'.$login.'" AND password like "'.$password.'"');
+
+        $found = User::getAll('email like "'.$login.'"');
 
         if ($found != null)
         {
             foreach ($found as $user) {
-                $_SESSION['id'] = $user->getId();
-                $_SESSION['name'] = $user->getName()." ".$user->getSurname();
+                if (password_verify($password, $user->getPassword())){
+                    $_SESSION['id'] = $user->getId();
+                    return true;
+                }else{
+                    return false;
+                }
             }
-            return true;
         }else{
             return false;
         }
@@ -45,14 +50,14 @@ class Auth
 
         if ($found == null)
         {
-            $newUser = new User(email: $email, password: $password );
+            $pass = password_hash($password, PASSWORD_DEFAULT);
+            $newUser = new User(email: $email, password: $pass );
             $newUser->save();
             self::login($email,$password);
             return true;
         }else{
             return false;
         }
-
     }
 
     public static function deleteProfil()

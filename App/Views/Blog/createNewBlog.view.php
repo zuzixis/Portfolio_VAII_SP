@@ -1,6 +1,6 @@
 <?php /** @var Array $data */ ?>
 
-<div class="blog-body blog-body-create">
+<div class="blog-body blog-body-create notification">
   <section id="first-section">
     <div>
       <h1>Písanie blogu...</h1>
@@ -16,9 +16,7 @@
         <h1>Nový článok</h1>
           <label for="create-title">Nadpis</label>
           <div class="txt_field">
-
               <textarea id="create-title" rows="3" cols="48" name="title" required></textarea>
-
           </div>
       </div>
       <div class="right-side">

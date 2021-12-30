@@ -5,11 +5,7 @@
     <div>
       <h1>Úprava blogu...</h1>
       <nav>
-        <ul>
-          <li>
-            <a id="btn-new-blog" href="?c=blog&a=blogBlogs">Zrušiť</a>
-          </li>
-        </ul>
+          <a id="btn-cancel-creating-blog" href="?c=blog&a=blogBlogs">Zrušiť</a>
       </nav>
     </div>
   </section>

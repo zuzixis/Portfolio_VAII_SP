@@ -225,7 +225,8 @@ class User extends Model
             $user->setBasicInfo($basicInfo);
 
             if($password != ""){
-                $user->setPassword($password);
+                $pass = password_hash($password, PASSWORD_DEFAULT);
+                $user->setPassword($pass);
             }
 
             if ($profilPhoto != ""){
