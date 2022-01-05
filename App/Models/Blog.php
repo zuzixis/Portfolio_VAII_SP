@@ -141,11 +141,16 @@ class Blog extends Model
     {
         if ($id > 0){
             if(Auth::isLogged()){
-                $blog = Blog::getOne($id);
-                $blog->setTitle($title);
-                $blog->setText($text);
-                $blog->save();
-                return true;
+
+                //$blog = Blog::getOne($id);
+                $found = Blog::getAll("id = ?", [ $id ]);
+
+                foreach ($found as $blog) {
+                    $blog->setTitle($title);
+                    $blog->setText($text);
+                    $blog->save();
+                    return true;
+                }
             }
         }
         return false;
@@ -155,9 +160,12 @@ class Blog extends Model
     {
         if ($id > 0){
             if(Auth::isLogged()){
-                $blog = Blog::getOne($id);
-                $blog->delete();
-                return true;
+                //$blog = Blog::getOne($id);
+                $found = Blog::getAll("id = ?", [ $id ]);
+                foreach ($found as $blog) {
+                    $blog->delete();
+                    return true;
+                }
             }
         }
         return false;

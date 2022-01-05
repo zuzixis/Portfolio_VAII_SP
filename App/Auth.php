@@ -12,9 +12,8 @@ class Auth
     public static function login($login, $password)
     {
 
-        //$found = User::getAll('email like "'.$login.'" AND password like "'.$password.'"');
-
-        $found = User::getAll('email like "'.$login.'"');
+        $found = User::getAll("email = ?", [ $login ]); //proti útoku
+        //$found = User::getAll('email like "'.$login.'"');
 
         if ($found != null)
         {
@@ -46,7 +45,8 @@ class Auth
 
     public static function register(mixed $email, mixed $password)
     {
-        $found = User::getAll('email like "'.$email.'"');
+        $found = User::getAll("email = ?", [ $email ]);
+        //$found = User::getAll('email like "'.$email.'"');
 
         if ($found == null)
         {
@@ -63,9 +63,11 @@ class Auth
     public static function deleteProfil()
     {
         $found = User::getOne($_SESSION['id']);
+        //$found = User::getAll("id = ?", [ $_SESSION['id'] ]);
         if ($found != null){
             //vymazenie všetkého čo user môže mať vytvorené
             //vymazanie blogov
+            //$blogs = Blog::getAll("user_id = ?" [ $found->getId() ]);
             $blogs = Blog::getAll("user_id=".$found->getId());
             foreach ($blogs as $blog){
                 $blog->delete();
@@ -73,6 +75,7 @@ class Auth
 
             //vymazanie projektov
             $projects = Project::getAll("user_id=".$found->getId());
+            //$projects = Project::getAll("user_id = ?" [ $found->getId() ]);
             foreach ($projects as $project){
                 $path = \App\Config\Configuration::PROJECTS_DIR . $project->getImage();
                 if (file_exists($path)) {
@@ -84,6 +87,7 @@ class Auth
 
             //vymazanie skillov
             $skills = UserSkill::getAll("user_id=".$found->getId());
+            //$skills = UserSkill::getAll("user_id = ?" [ $found->getId() ]);
             foreach ($skills as $skill){
                 $skill->delete();
             }

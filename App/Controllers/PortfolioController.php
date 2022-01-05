@@ -28,6 +28,7 @@ class PortfolioController extends AControllerRedirect
         $user = null;
 
         if (Auth::isLogged()){
+            //$user = User::getAll("id = ?", [ $_SESSION['id'] ]);
             $user = User::getOne($_SESSION['id']);
         }
 
@@ -41,6 +42,7 @@ class PortfolioController extends AControllerRedirect
     public function editProfil(){
         if (Auth::isLogged()){
             $user = User::getOne($_SESSION['id']);
+            //$user = User::getAll("id = ?", [ $_SESSION['id'] ]);
 
             return $this->html(
                 [
@@ -53,6 +55,7 @@ class PortfolioController extends AControllerRedirect
     public function editSkills(){
         if (Auth::isLogged() && $_SESSION['id'] > 0){
                 $user = User::getOne($_SESSION['id']);
+                //$user = User::getAll("id = ?", [ $_SESSION['id'] ]);
                 $skills = Skill::getAll();
 
                 return $this->html(
@@ -69,10 +72,15 @@ class PortfolioController extends AControllerRedirect
         $userId = $this->request()->getValue('userId');
         if ( $userId > 0 ){
             $user = User::getOne($userId);
+            //$user = User::getAll("id = ?", [ $_SESSION['id'] ]);
             $skills = Skill::getAll("id in(SELECT skill_id FROM user_skills WHERE user_id = $userId )");
+            //$skills = Skill::getAll("id in(SELECT skill_id FROM user_skills WHERE user_id = ? ", [ $userId ] );
             $blogs = Blog::getAll("user_id = $userId");
+            //$blogs = Blog::getAll("user_id = ? ", [ $userId ]);
             $projects = Project::getAll("user_id = $userId");
+            //$projects = Project::getAll("user_id = ? ", [$userId]);
             $files = File::getAll("user_id = $userId");
+            //$files = File::getAll("user_id = ?" , [$userId]);
 
             return $this->html(
                 [
@@ -163,7 +171,8 @@ class PortfolioController extends AControllerRedirect
 
     public function addSkills(){
         if (Auth::isLogged() && $_SESSION['id']>0){
-            $oldSkills = UserSkill::getAll("user_id =".$_SESSION['id']);
+            //$oldSkills = UserSkill::getAll("user_id =".$_SESSION['id']);
+            $oldSkills = UserSkill::getAll("user_id = ?",[$_SESSION['id']]);
 
             foreach ($oldSkills as $skill){
                 $skill->delete();

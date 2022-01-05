@@ -7,7 +7,7 @@
     <meta name="keywords" content="Blog">
     <meta name="author" content="Zuzana Žillová">
     <title>Portfolio</title>
-
+    <link rel="icon" href="public/files/img/portfolio_logo_stranka.png">
     <link rel="stylesheet" href="<?=\App\Config\Configuration::STYLE?>" type="text/css">
 
     <script src="<?=\App\Config\Configuration::SCRIPT?>"></script>

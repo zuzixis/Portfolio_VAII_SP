@@ -139,8 +139,11 @@
   <section>
       <div class="profil-blogs">
           <?php
-          if ($data['files']!=null) {?>
+          if ($data['files']!=null || (\App\Auth::isLogged() && $_SESSION["id"] == $data['user']->getId())) {?>
               <h2 class="p-subtitles">Moje zdieľané súbory</h2>
+          <?php }?>
+          <?php
+          if ($data['files']!=null) {?>
               <ul>
                   <?php foreach ($data['files'] as $file) { ?>
                       <li><a href="<?=\App\Config\Configuration::FILES_DIR.$file->getFile()?>" download="<?=$file->getTitle()?>"><?=$file->getTitle()?></a></li>

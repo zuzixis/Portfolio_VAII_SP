@@ -100,14 +100,18 @@ class File extends Model
 
     public static function deteteFile(int $id){
         if (Auth::isLogged() && $_SESSION['id']>0 && $id > 0){
-            $file = File::getOne($id);
-            $path = \App\Config\Configuration::FILES_DIR . $file->getFile();
-            if (file_exists($path)) {
-                chmod($path, 0644);
-                unlink($path);
-                $file->delete();
+            //$file = File::getOne($id);
+            $found = File::getAll("id = ?", [ $id ]);
+
+            foreach ($found as $file) {
+                $path = \App\Config\Configuration::FILES_DIR . $file->getFile();
+                if (file_exists($path)) {
+                    chmod($path, 0644);
+                    unlink($path);
+                    $file->delete();
+                }
+                return true;
             }
-            return true;
         }
         return false;
     }
