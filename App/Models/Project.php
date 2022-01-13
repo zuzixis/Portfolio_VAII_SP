@@ -103,18 +103,15 @@ class Project extends Model
 
     public static function deteteProject(int $id){
         if (Auth::isLogged() && $_SESSION['id']>0 && $id > 0){
-            //$project = Project::getOne($id);
-            $found = Project::getAll("id = ?", [ $id ]);
+            $project = Project::getOne($id);
 
-            foreach ($found as $project) {
-                $path = \App\Config\Configuration::PROJECTS_DIR . $project->getImage();
-                if (file_exists($path)) {
-                    chmod($path, 0644);
-                    unlink($path);
-                    $project->delete();
-                }
-                return true;
+            $path = \App\Config\Configuration::PROJECTS_DIR . $project->getImage();
+            if (file_exists($path)) {
+                chmod($path, 0644);
+                unlink($path);
+                $project->delete();
             }
+            return true;
         }
         return false;
     }

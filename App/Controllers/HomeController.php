@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Blog;
+use function Couchbase\defaultDecoder;
 
 
 /**
@@ -14,7 +15,7 @@ class HomeController extends AControllerRedirect
 {
 
     public function index()
-    {
+  {
         return $this->html(
             [
                 'error' => $this->request()->getValue('error'),

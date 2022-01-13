@@ -16,7 +16,7 @@
                       <h1>Načítaný článok</h1>
                       <label>Nadpis</label>
                       <div class="txt_field">
-                          <textarea id="create-title" rows="3" cols="48" name="title" required><?=$data['blog']->getTitle()?></textarea>
+                          <textarea id="create-title" rows="3" cols="48" minlength="15" name="title" required><?=$data['blog']->getTitle()?></textarea>
                           <span></span>
                       </div>
                   </div>
@@ -24,7 +24,7 @@
                       <div>
                           <input type="hidden" name="id" value="<?= $data['blog']->getId() ?>">
                           <label for="create-blog-text">Text:</label>
-                          <textarea id="create-blog-text"  rows="10" cols="10" name="text" required><?=$data['blog']->getText()?></textarea>
+                          <textarea id="create-blog-text" minlength="200" rows="10" cols="10" name="text" required><?=$data['blog']->getText()?></textarea>
                       </div>
                       <input type="submit" value="Upraviť blog" name="update-blog">
                   </div>

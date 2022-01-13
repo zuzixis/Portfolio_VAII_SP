@@ -61,5 +61,8 @@ class Configuration
     public const SUCCESSFULLY_ADDED_FILE = "Súbor sa úspešne pridal do portfólia.";
     public const ERR_ADDING_FILE = "Pri načítaní nastala chyba!";
 
+    public const SUCCESSFULLY_DELETED_FILE = "Úspešné vymazaie súboru!";
+    public const ERR_DELETING_FILE = "Pri mazaní súboru nastala chyba!";
+
 
 }

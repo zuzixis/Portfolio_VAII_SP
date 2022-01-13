@@ -22,12 +22,6 @@ class BlogController extends AControllerRedirect
         $blog = Blog::getOne($blogId);
         $user = User::getOne($blog->getUserId());
 
-        /*$blog = Blog::getAll("id = ? ", [ $blogId ]);
-
-        foreach ($blog as $b) {
-            $user = User::getAll("id = ?", [ $b->getUserId() ]);
-        }*/
-
         return $this->html(
             [
                 'blog' => $blog,
@@ -41,11 +35,6 @@ class BlogController extends AControllerRedirect
         foreach ($blogs as $blog)
         {
             $user = User::getOne($blog->getUserId());
-            //$user = User::getAll("id = ?", [ $blog->getUserId() ]);
-            /*foreach ($user as $b) {
-                $blog->setUserProfilPhoto($b->getProfilPhoto());
-                $blog->setUserName($b->getName() . " " . $b->getSurname());
-            }*/
             $blog->setUserProfilPhoto($user->getProfilPhoto());
             $blog->setUserName($user->getName() . " " . $user->getSurname());
 
@@ -75,9 +64,7 @@ class BlogController extends AControllerRedirect
 
     public function updateBlog(){
         $blogId = $this->request()->getValue('blogId');
-
         $blog = Blog::getOne($blogId);
-        //$blog = Blog::getAll("id = ? ", [ $blogId ]);
 
         return $this->html(
             [

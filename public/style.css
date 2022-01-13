@@ -11,6 +11,17 @@
     transition: 0.3s;
 }
 
+.closebtnn {
+    margin-right: 15px;
+    color: red;
+    font-weight: bold;
+    float: left;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
 .closebtn:hover {
     color: black;
 }
@@ -1013,7 +1024,19 @@ textarea{
     }
 }
 
-/* Tablety */
+@media screen and (max-height: 710px){
+    .center {
+        top: 65%
+    }
+
+    .blog-body-create .center {
+        top: 75%;
+    }
+}
+
+
+
+    /* Tablety */
 @media screen and (max-width: 780px) {
     /*NAVIGÁCIA*/
     .btn-menu{
@@ -1439,7 +1462,7 @@ textarea{
 
     .blog-body p {
         font-size: 12px;
-        margin-left: 76px;
+        margin-left: 0px;
     }
 
     /*PRIHLÁSENIE*/

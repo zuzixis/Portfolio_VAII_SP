@@ -91,6 +91,11 @@ class File extends Model
 
     public static function addNewFile(string $title, string $file){
         if (Auth::isLogged() && $_SESSION['id']>0){
+
+            if (strlen($title) < 5){
+                return false;
+            }
+
             $newFile = new File(user_id: $_SESSION['id'],title: $title,file: $file);
             $newFile->save();
             return true;
@@ -100,18 +105,15 @@ class File extends Model
 
     public static function deteteFile(int $id){
         if (Auth::isLogged() && $_SESSION['id']>0 && $id > 0){
-            //$file = File::getOne($id);
-            $found = File::getAll("id = ?", [ $id ]);
+            $file = File::getOne($id);
 
-            foreach ($found as $file) {
-                $path = \App\Config\Configuration::FILES_DIR . $file->getFile();
-                if (file_exists($path)) {
-                    chmod($path, 0644);
-                    unlink($path);
-                    $file->delete();
-                }
-                return true;
+            $path = \App\Config\Configuration::FILES_DIR . $file->getFile();
+            if (file_exists($path)) {
+                chmod($path, 0644);
+                unlink($path);
+                $file->delete();
             }
+            return true;
         }
         return false;
     }

@@ -7,6 +7,14 @@ use App\Models\Project;
 use App\Models\User;
 use App\Models\UserSkill;
 
+function test_input(mixed $data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
 class Auth
 {
     public static function login($login, $password)
@@ -46,7 +54,21 @@ class Auth
     public static function register(mixed $email, mixed $password)
     {
         $found = User::getAll("email = ?", [ $email ]);
-        //$found = User::getAll('email like "'.$email.'"');
+
+        //kontrola na strane servera
+        $email = test_input($email);
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return false;
+        }
+        if (strlen($password) < 8){
+            return false;
+        }
+        if(!preg_match('/[A-Z]/', $password)){
+            return false;
+        }
+        if(!preg_match('/[0-9]/', $password)){
+            return false;
+        }
 
         if ($found == null)
         {
@@ -63,19 +85,18 @@ class Auth
     public static function deleteProfil()
     {
         $found = User::getOne($_SESSION['id']);
-        //$found = User::getAll("id = ?", [ $_SESSION['id'] ]);
+
         if ($found != null){
             //vymazenie všetkého čo user môže mať vytvorené
+
             //vymazanie blogov
-            //$blogs = Blog::getAll("user_id = ?" [ $found->getId() ]);
-            $blogs = Blog::getAll("user_id=".$found->getId());
+            $blogs = Blog::getAll("user_id = ?" ,[ $found->getId() ]);
             foreach ($blogs as $blog){
                 $blog->delete();
             }
 
             //vymazanie projektov
-            $projects = Project::getAll("user_id=".$found->getId());
-            //$projects = Project::getAll("user_id = ?" [ $found->getId() ]);
+            $projects = Project::getAll("user_id = ?" ,[ $found->getId() ]);
             foreach ($projects as $project){
                 $path = \App\Config\Configuration::PROJECTS_DIR . $project->getImage();
                 if (file_exists($path)) {
@@ -86,8 +107,7 @@ class Auth
             }
 
             //vymazanie skillov
-            $skills = UserSkill::getAll("user_id=".$found->getId());
-            //$skills = UserSkill::getAll("user_id = ?" [ $found->getId() ]);
+            $skills = UserSkill::getAll("user_id = ?" ,[ $found->getId() ]);
             foreach ($skills as $skill){
                 $skill->delete();
             }

@@ -128,6 +128,14 @@ class Blog extends Model
 
     public static function createBlog(string $title, string $text)
     {
+        if (strlen($title) < 15){
+            return false;
+        }
+
+        if (strlen($text) < 200){
+            return false;
+        }
+
         if(Auth::isLogged()){
             $newBlog = new Blog(title: $title,text: $text ,user_id: $_SESSION["id"] );
             $newBlog->save();
@@ -139,18 +147,22 @@ class Blog extends Model
 
     public static function updateBlog(string $title, string $text, int $id)
     {
+        if (strlen($title) < 15){
+            return false;
+        }
+
+        if (strlen($text) < 200){
+            return false;
+        }
+
         if ($id > 0){
             if(Auth::isLogged()){
+                $blog = Blog::getOne($id);
 
-                //$blog = Blog::getOne($id);
-                $found = Blog::getAll("id = ?", [ $id ]);
-
-                foreach ($found as $blog) {
-                    $blog->setTitle($title);
-                    $blog->setText($text);
-                    $blog->save();
-                    return true;
-                }
+                $blog->setTitle($title);
+                $blog->setText($text);
+                $blog->save();
+                return true;
             }
         }
         return false;
@@ -160,12 +172,9 @@ class Blog extends Model
     {
         if ($id > 0){
             if(Auth::isLogged()){
-                //$blog = Blog::getOne($id);
-                $found = Blog::getAll("id = ?", [ $id ]);
-                foreach ($found as $blog) {
-                    $blog->delete();
-                    return true;
-                }
+                $blog = Blog::getOne($id);
+                $blog->delete();
+                return true;
             }
         }
         return false;

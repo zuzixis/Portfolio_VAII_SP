@@ -146,7 +146,13 @@
           if ($data['files']!=null) {?>
               <ul>
                   <?php foreach ($data['files'] as $file) { ?>
-                      <li><a href="<?=\App\Config\Configuration::FILES_DIR.$file->getFile()?>" download="<?=$file->getTitle()?>"><?=$file->getTitle()?></a></li>
+                          <div class="file">
+                              <li><a href="<?=\App\Config\Configuration::FILES_DIR.$file->getFile()?>" download="<?=$file->getTitle()?>"><?=$file->getTitle()?></a>
+                                  <?php if (\App\Auth::isLogged() && ($_SESSION["id"] == $data['user']->getId()) )
+                                  {?>
+                                  <span class="closebtnn" onclick="deleteFile(<?=$file->getId()?>,this)">&times;</span></li>
+                              <?php }?>
+                          </div>
                   <?php }?>
               </ul>
           <?php }?>
@@ -174,12 +180,12 @@
                   {?>
                       <?php
                       if ($_SESSION["id"] == $data['user']->getId()) {?>
-                          <a href="?c=portfolio&a=deleteProject&id=<?= $project->getId(); ?>">
-                              <img class="trash" src="<?=\App\Config\Configuration::IMG_DIR."cancel.png"?>">
+                          <a onclick="deleteProject(<?= $project->getId(); ?>,this)">
+                              <img class="trash" src="<?=\App\Config\Configuration::IMG_DIR."cancel.png"?>" alt="vymazanie projektu">
                           </a>
                       <?php }?>
                   <?php }?>
-                  <img src="<?=\App\Config\Configuration::PROJECTS_DIR.$project->getImage()?>" alt="tetris">
+                  <img src="<?=\App\Config\Configuration::PROJECTS_DIR.$project->getImage()?>" alt="obrazok projektu">
                   <div class="detail-grid-item">
                       <p>
                           <?=$project->getTitle()?>

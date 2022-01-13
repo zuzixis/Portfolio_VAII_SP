@@ -7,6 +7,7 @@
             <a id="btn-cancel-creating-blog" href="?c=portfolio&a=profil&userId=<?= $_SESSION['id']?>">Zrušiť</a>
         </nav>
         <div class="add-project-body">
+            <div id="pridaj"></div>
             <?php if ($data['error'] != ""){?>
                 <div class="alert ale-err">
                     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
@@ -25,14 +26,14 @@
             <?php } ?>
 
         <div class="add-project forms">
-            <form method="post" action="?c=portfolio&a=addFile" enctype="multipart/form-data">
+            <form id="myForm" method="post" enctype="multipart/form-data"> <!--action="?c=portfolio&a=addFile"-->
                 <div class="txt_field">
-                    <input id="tit" type="text" name="title" required>
+                    <input id="tit" type="text" minlength="5" name="title" required>
                     <span></span>
                     <label for="tit">Titulok súboru</label>
                 </div>
                 <input type="file" id="project" name="project" required><br>
-                <input id="addProject" type="submit" value="Pridať súbor">
+                <input id="addProject" type="button" onclick="addNew('?c=portfolio&a=addFile')" value="Pridať súbor">
             </form>
         </div>
         <?php if ($data['error'] == \App\Config\Configuration::ERR_PROJECT){?>

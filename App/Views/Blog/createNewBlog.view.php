@@ -16,13 +16,15 @@
         <h1>Nový článok</h1>
           <label for="create-title">Nadpis</label>
           <div class="txt_field">
-              <textarea id="create-title" rows="3" cols="48" name="title" required></textarea>
+              <textarea id="create-title"
+                        minlength="15"
+                        rows="3" cols="48" name="title" required></textarea>
           </div>
       </div>
       <div class="right-side">
           <div>
             <label for="create-blog-text">Text:</label>
-              <textarea id="create-blog-text"  rows="25" name="text" required></textarea>
+              <textarea id="create-blog-text" minlength="200" rows="25" name="text" required></textarea>
 
           </div>
           <input type="submit" value="Vytvoriť blog">

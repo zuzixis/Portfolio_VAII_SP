@@ -214,39 +214,72 @@ class User extends Model
         string $location, string $basicInfo, string $profilPhoto, string $password
     ){
         if (Auth::isLogged() && $_SESSION['id'] > 0){
-            //$user = User::getOne($_SESSION['id']);
-            $found = User::getAll("id = ?", [ $_SESSION['id'] ]);
+            $user = User::getOne($_SESSION['id']);
 
-            foreach ($found as $user) {
-                $user->setName($name);
-                $user->setSurname($surname);
-                $user->setNumber($number);
-                $user->setFacebook($facebook);
-                $user->setInstagram($instagram);
-                $user->setLocation($location);
-                $user->setBasicInfo($basicInfo);
+            //kontrola na strane servera
+            if (strlen($number) > 0){
+                if(strlen($number) == 10) {
+                    if(!preg_match('/[0-9]{10}/', $number)){
+                        return false;
+                    }
 
-                if ($password != "") {
-                    $pass = password_hash($password, PASSWORD_DEFAULT);
-                    $user->setPassword($pass);
+                }else if (strlen($number) == 13){
+                    if(!preg_match('/[0-9]{12}+/', $number)) {
+                        return false;
+                    }
+                }else{
+                    return false;
                 }
+            }
 
-                if ($profilPhoto != "") {
-                    if ($user->getProfilPhoto() != \App\Config\Configuration::PROFIL_DEFAULT_PHOTO) {
-                        $path = \App\Config\Configuration::PROFIL_PHOTO_DIR . $user->getProfilPhoto();
-                        if (file_exists($path)) {
-                            chmod($path, 0644);
-                            unlink($path);
-                        }
-                        $user->setProfilPhoto($profilPhoto);
+            if (strlen($name) > 0){
+                if(!preg_match('/[a-z]/', $name)){
+                    return false;
+                }
+            }
+
+            if (strlen($surname) > 0){
+                if(!preg_match('/[a-z]/', $surname)){
+                    return false;
+                }
+            }
+
+            if (strlen($location) > 0){
+                if(!preg_match('/[a-z]/', $location)){
+                    return false;
+                }
+            }
+
+
+            $user->setName($name);
+            $user->setSurname($surname);
+            $user->setNumber($number);
+            $user->setFacebook($facebook);
+            $user->setInstagram($instagram);
+            $user->setLocation($location);
+            $user->setBasicInfo($basicInfo);
+
+            if ($password != "") {
+                $pass = password_hash($password, PASSWORD_DEFAULT);
+                $user->setPassword($pass);
+            }
+
+            if ($profilPhoto != "") {
+                if ($user->getProfilPhoto() != \App\Config\Configuration::PROFIL_DEFAULT_PHOTO) {
+                    $path = \App\Config\Configuration::PROFIL_PHOTO_DIR . $user->getProfilPhoto();
+                    if (file_exists($path)) {
+                        chmod($path, 0644);
+                        unlink($path);
                     }
                     $user->setProfilPhoto($profilPhoto);
                 }
-
-                $user->save();
-
-                return true;
+                $user->setProfilPhoto($profilPhoto);
             }
+
+            $user->save();
+
+            return true;
+
         }
 
         return false;

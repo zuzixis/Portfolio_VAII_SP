@@ -10,8 +10,10 @@
     <link rel="icon" href="public/files/img/portfolio_logo_stranka.png">
     <link rel="stylesheet" href="<?=\App\Config\Configuration::STYLE?>" type="text/css">
 
+    <script src="public/jquery-3.3.1.min.js"></script>
     <script src="<?=\App\Config\Configuration::SCRIPT?>"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
 </head>
 <body>

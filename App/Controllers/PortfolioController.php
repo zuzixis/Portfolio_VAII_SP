@@ -28,7 +28,6 @@ class PortfolioController extends AControllerRedirect
         $user = null;
 
         if (Auth::isLogged()){
-            //$user = User::getAll("id = ?", [ $_SESSION['id'] ]);
             $user = User::getOne($_SESSION['id']);
         }
 
@@ -42,7 +41,6 @@ class PortfolioController extends AControllerRedirect
     public function editProfil(){
         if (Auth::isLogged()){
             $user = User::getOne($_SESSION['id']);
-            //$user = User::getAll("id = ?", [ $_SESSION['id'] ]);
 
             return $this->html(
                 [
@@ -55,7 +53,6 @@ class PortfolioController extends AControllerRedirect
     public function editSkills(){
         if (Auth::isLogged() && $_SESSION['id'] > 0){
                 $user = User::getOne($_SESSION['id']);
-                //$user = User::getAll("id = ?", [ $_SESSION['id'] ]);
                 $skills = Skill::getAll();
 
                 return $this->html(
@@ -72,15 +69,10 @@ class PortfolioController extends AControllerRedirect
         $userId = $this->request()->getValue('userId');
         if ( $userId > 0 ){
             $user = User::getOne($userId);
-            //$user = User::getAll("id = ?", [ $_SESSION['id'] ]);
-            $skills = Skill::getAll("id in(SELECT skill_id FROM user_skills WHERE user_id = $userId )");
-            //$skills = Skill::getAll("id in(SELECT skill_id FROM user_skills WHERE user_id = ? ", [ $userId ] );
-            $blogs = Blog::getAll("user_id = $userId");
-            //$blogs = Blog::getAll("user_id = ? ", [ $userId ]);
-            $projects = Project::getAll("user_id = $userId");
-            //$projects = Project::getAll("user_id = ? ", [$userId]);
-            $files = File::getAll("user_id = $userId");
-            //$files = File::getAll("user_id = ?" , [$userId]);
+            $skills = Skill::getAll("id in(SELECT skill_id FROM user_skills WHERE user_id = ? )",[ $userId ]);
+            $blogs = Blog::getAll("user_id = ? ", [ $userId ]);
+            $projects = Project::getAll("user_id = ? ", [$userId]);
+            $files = File::getAll("user_id = ?" , [$userId]);
 
             return $this->html(
                 [
@@ -169,36 +161,35 @@ class PortfolioController extends AControllerRedirect
         }
     }
 
-    public function addSkills(){
-        if (Auth::isLogged() && $_SESSION['id']>0){
-            //$oldSkills = UserSkill::getAll("user_id =".$_SESSION['id']);
-            $oldSkills = UserSkill::getAll("user_id = ?",[$_SESSION['id']]);
-
-            foreach ($oldSkills as $skill){
+    public function addSkills()
+    {
+        if (Auth::isLogged() && $_SESSION['id'] > 0) {
+            $oldSkills = UserSkill::getAll("user_id = ?", [$_SESSION['id']]);
+            foreach ($oldSkills as $skill) {
                 $skill->delete();
             }
 
             $allSkills = Skill::getAll();
 
-            for ($i = 1; $i < count($allSkills)+1; $i++) {
-                if ($_POST[$i] != null){
-                    $newSkill = new UserSkill(user_id: $_SESSION['id'],skill_id: $_POST[$i]);
+            for ($i = 1; $i < count($allSkills) + 1; $i++) {
+                if ($_POST[$i] != null) {
+                    $newSkill = new UserSkill(user_id: $_SESSION['id'], skill_id: $_POST[$i]);
                     $newSkill->save();
                 }
             }
 
-            $this->redirect('portfolio','profil',
+            $this->redirect('portfolio', 'profil',
                 [
                     'userId' => $_SESSION['id'],
                     'message' => \App\Config\Configuration::SUCCESSFULLY_UPDATED_SKILLS
-                ] );
+                ]);
 
-        }else{
-            $this->redirect('portfolio','profil',
+        } else {
+            $this->redirect('portfolio', 'profil',
                 [
                     'userId' => $_SESSION['id'],
                     'error' => \App\Config\Configuration::ERR_UPDATING_SKILLS
-                ] );
+                ]);
         }
     }
 
@@ -286,6 +277,29 @@ class PortfolioController extends AControllerRedirect
                     [
                         'userId' => $_SESSION['id'],
                         'error' => \App\Config\Configuration::ERR_DElETING_PROJECT
+                    ] );
+            }
+        }else{
+            $this->redirect('home');
+        }
+    }
+
+    public function deleteFile()
+    {
+        if (Auth::isLogged()){
+            $idFile = $this->request()->getValue('id');
+
+            if (File::deteteFile($idFile)){
+                $this->redirect('portfolio','profil',
+                    [
+                        'userId' => $_SESSION['id'],
+                        'message' => \App\Config\Configuration::SUCCESSFULLY_DELETED_FILE
+                    ] );
+            }else{
+                $this->redirect('portfolio','profil',
+                    [
+                        'userId' => $_SESSION['id'],
+                        'error' => \App\Config\Configuration::ERR_DELETING_FILE
                     ] );
             }
         }else{
