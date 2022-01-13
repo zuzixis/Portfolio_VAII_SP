@@ -2,19 +2,18 @@
 <html lang="sk">
 <head>
     <meta charset="UTF-8">
+    <title>Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Blogy">
     <meta name="keywords" content="Blog">
     <meta name="author" content="Zuzana Žillová">
-    <title>Portfolio</title>
+
     <link rel="icon" href="public/files/img/portfolio_logo_stranka.png">
     <link rel="stylesheet" href="<?=\App\Config\Configuration::STYLE?>" type="text/css">
 
     <script src="public/jquery-3.3.1.min.js"></script>
     <script src="<?=\App\Config\Configuration::SCRIPT?>"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-
 </head>
 <body>
 <header>
@@ -64,7 +63,7 @@
                 if (\App\Auth::isLogged())
                 {?>
                     <li class="no-active"><a id="btn-login" href="?c=auth&a=logout">Odhlásiť sa</a></li>
-                <?php
+                    <?php
                 }else{?>
                     <li class="no-active"><a id="btn-login" href="<?= \App\Config\Configuration::LOGIN_URL ?>">Prihlásenie</a></li>
                 <?php }?>
@@ -74,15 +73,7 @@
     </div>
 </header>
 
-    <?= $contentHTML ?>
-
-<!--<footer class="footer">
-    <div>
-    </div>
-</footer>-->
+<?= $contentHTML ?>
 
 </body>
 </html>
-
-
-

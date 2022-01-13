@@ -55,10 +55,9 @@
                             <?php
                             if ($_SESSION["id"] == $blog->getUserId()) {?>
                                 <div class="modify">
-                                    <a class="modify-item" id="btn-update-blog" href="?c=blog&a=updateBlog&blogId=<?=$blog->getId()?>">Upraviť článok</a>
+                                    <a class="modify-item btn-update-blog" href="?c=blog&a=updateBlog&blogId=<?=$blog->getId()?>">Upraviť článok</a>
 
-                                    <a class="modify-item" onclick="confirmBlogDeletion(<?=$blog->getId()?> ,this)" id="btn-update-blog" href="#">Vymazať článok</a>
-                                    <a href="#" id="delete-blog"></a>
+                                    <a class="modify-item btn-update-blog" onclick="confirmBlogDeletion(<?=$blog->getId()?> ,this)" href="#">Vymazať článok</a>
 
                                 </div>
                             <?php }?>
@@ -66,6 +65,7 @@
                     </div>
                 </div>
             <?php }?>
+            <a href="#" id="delete-blog"></a>
         </div>
     </section>
 </div>

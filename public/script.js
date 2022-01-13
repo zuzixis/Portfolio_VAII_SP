@@ -70,7 +70,8 @@ function deleteFile(id, element){
         url: '?c=portfolio&a=deleteFile&id=' + id,
         method: 'GET',
         success: function (result) {
-            $(element).closest('.file').remove();
+            //$(element).closest('.file').remove();
+            $(element).closest('li').remove();
         },
         error: function () {
             alert("Pri mazaní projektu vznikla chyba!");

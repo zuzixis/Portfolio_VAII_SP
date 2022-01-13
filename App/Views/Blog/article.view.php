@@ -43,7 +43,8 @@
         </div>
     </section>
     <section>
-         <div class="blogger-box-article blogger-box">
+        <h6 class="skryty-nazov">.</h6>
+         <div class="blogger-box-article blogger-box article">
              <p>
              <?php
                 echo nl2br($data['blog']->getText());
@@ -52,8 +53,3 @@
          </div>
     </section>
 </div>
-
-
-
-</body>
-</html>

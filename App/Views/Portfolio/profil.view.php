@@ -35,7 +35,7 @@
               <?php
               if ($_SESSION["id"] == $data['user']->getId()) {?>
                   <div class="modify">
-                      <a id="btn-update-profil" href="?c=portfolio&a=editProfil">Všeobecné úpravy profilu</a>
+                      <a class="btn-update-profil" href="?c=portfolio&a=editProfil">Všeobecné úpravy profilu</a>
                   </div>
               <?php }?>
           <?php }?>
@@ -90,8 +90,8 @@
     <section>
         <div class="profil-skills">
             <?php if ($data['skills'] != null ) {?>
-            <ul>
                 <h2 class="p-subtitles">Skills</h2>
+            <ul>
                 <?php foreach ($data['skills'] as $skill) { ?>
                     <li><img class="skill-icons" src="<?=\App\Config\Configuration::SKILLS_DIR.$skill->getImage()?>" alt="obrázok dovedomosti - skill"></li>
                 <?php }?>
@@ -106,7 +106,7 @@
                 <?php
                 if ($_SESSION["id"] == $data['user']->getId()) {?>
                     <div class="modify">
-                        <a id="btn-update-profil" href="?c=portfolio&a=editskills">Upraviť skilly</a>
+                        <a class="btn-update-profil" href="?c=portfolio&a=editskills">Upraviť skilly</a>
                     </div>
                 <?php }?>
             <?php }?>
@@ -137,7 +137,7 @@
     </div>
   </section>
   <section>
-      <div class="profil-blogs">
+      <div class="profil-portfolio profil-blogs new">
           <?php
           if ($data['files']!=null || (\App\Auth::isLogged() && $_SESSION["id"] == $data['user']->getId())) {?>
               <h2 class="p-subtitles">Moje zdieľané súbory</h2>
@@ -146,13 +146,11 @@
           if ($data['files']!=null) {?>
               <ul>
                   <?php foreach ($data['files'] as $file) { ?>
-                          <div class="file">
                               <li><a href="<?=\App\Config\Configuration::FILES_DIR.$file->getFile()?>" download="<?=$file->getTitle()?>"><?=$file->getTitle()?></a>
                                   <?php if (\App\Auth::isLogged() && ($_SESSION["id"] == $data['user']->getId()) )
                                   {?>
                                   <span class="closebtnn" onclick="deleteFile(<?=$file->getId()?>,this)">&times;</span></li>
                               <?php }?>
-                          </div>
                   <?php }?>
               </ul>
           <?php }?>
@@ -161,8 +159,10 @@
               <?php
               if ($_SESSION["id"] == $data['user']->getId()) {?>
                   <div class="modify">
-                      <a id="btn-update-profil" href="?c=portfolio&a=addNewFile">Pridať nové odkazy</a>
+                      <a class="btn-update-profil" href="?c=portfolio&a=addNewFile">Pridať nové odkazy</a>
                   </div>
+
+
               <?php }?>
           <?php }?>
       </div>
@@ -201,7 +201,7 @@
             <?php
             if ($_SESSION["id"] == $data['user']->getId()) {?>
                 <div class="modify">
-                    <a id="btn-update-profil" href="?c=portfolio&a=addProject">Pridať projekty</a>
+                    <a class="btn-update-profil" href="?c=portfolio&a=addProject">Pridať projekty</a>
                 </div>
             <?php }?>
         <?php }?>

@@ -39,10 +39,7 @@
                 <input id="addProject" type="button" onclick="addNew('?c=portfolio&a=addNewProject')" value="Pridať projekt">
                 </form>
             </div>
-            <?php if ($data['error'] == \App\Config\Configuration::ERR_PROJECT) { ?>
-                <div class="reg-error"><?= $data['error'] ?></div>
-            <?php } ?>
-
+        </div>
     </section>
 </div>
 

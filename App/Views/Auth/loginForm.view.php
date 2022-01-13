@@ -1,5 +1,4 @@
 <?php /** @var Array $data */ ?>
-
 <div class="notification">
     <img class="abstract-background" src="<?= \App\Config\Configuration::IMG_DIR."login-bg2.png"?>" alt="pozadie">
     <?php if ($data['error'] != ""){?>

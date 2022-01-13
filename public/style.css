@@ -1,4 +1,10 @@
+.new .btn-update-profil{
+    color: #FFF;
+}
 
+.new .modify a:hover{
+    color: #FFF;
+}
 
 .closebtn {
     margin-left: 15px;
@@ -408,7 +414,7 @@ footer{
     margin: 25px;
 }
 
-#btn-update-blog , #btn-delete-blog {
+.btn-update-blog , #btn-delete-blog {
     background-color: #1193D6;
     border-radius: 12px;
     color: #FFF;
@@ -417,6 +423,11 @@ footer{
     font-size: 11px;
     padding: 5px;
 }
+
+.modify .btn-update-blog{
+    color: #FFF;
+}
+
 
 #btn-delete-blog{
     text-decoration: none;
@@ -428,6 +439,7 @@ footer{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    padding-bottom: 5px;
 }
 
 .modify-item{
@@ -565,7 +577,7 @@ section {
     font-family: Arial, sans-serif;
 }
 
-#btn-update-profil{
+.btn-update-profil{
     background-color: #1193D6;
     border-radius: 20px;
     color: #FFF;
@@ -691,6 +703,19 @@ form .txt_field{
 }
 
 input[type="submit"]{
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+    background: #2691d9;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+}
+
+input[type="button"]{
     width: 100%;
     height: 50px;
     border: 1px solid;
@@ -961,6 +986,11 @@ textarea{
 /*Desktops - menší */
 @media screen and (max-width: 1600px){
     /*NAVIGÁCIA*/
+
+    .blog-body-create .center {
+        top: 60%;
+    }
+
     .main-menu{
         padding-right: 8px;
     }
@@ -1024,7 +1054,7 @@ textarea{
     }
 }
 
-@media screen and (max-height: 710px){
+@media screen and (max-height: 600px){
     .center {
         top: 65%
     }
@@ -1153,7 +1183,7 @@ textarea{
 
     .blog-body-create .center{
         left: 60%;
-        margin: 0;
+        margin-top: 15px;
     }
 
     .blog-body-create .center {
@@ -1273,7 +1303,7 @@ textarea{
         font-size: 28px;
     }
 
-    .profil-body #btn-update-profil {
+    .profil-body .btn-update-profil {
         font-size: 12px;
         padding: 3px;
     }
@@ -1308,6 +1338,9 @@ textarea{
 /* Mobily */
 @media screen and (max-width: 414px) {
     /*NAVIGÁCIA*/
+    .blog-body-create .center {
+        top: 48%;
+    }
     .main-menu {
         height: 33px;
         margin-top: 27px;
@@ -1519,6 +1552,11 @@ textarea{
         font-size: 12px;
     }
 
+    input[type="button"]{
+        height: 25px;
+        font-size: 12px;
+    }
+
 
     .signup_link{
         margin: 10px 0;
@@ -1701,7 +1739,7 @@ textarea{
         margin-top: 40px;
     }
 
-    .profil-body #btn-update-profil {
+    .profil-body .btn-update-profil {
         font-size: 10px;
         padding: 2px;
     }
@@ -1768,4 +1806,12 @@ textarea{
 
 }
 /*=======================================================================*/
+.skryty-nazov{
+    visibility: hidden;
+}
+
+.btn-update-profil a {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
