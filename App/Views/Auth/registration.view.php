@@ -37,19 +37,6 @@
             </div>
 
             <div class="reg-error" id="err-title"></div>
-
-
-            <!--<div class="txt_field">
-                <input id="log-pass" type="password" name="password" required>
-                <span></span>
-                <label for="log-pass">Zadajte heslo</label>
-            </div>
-
-            <div class="txt_field">
-                <input id="log-pass" type="password" name="password-repeat" required>
-                <span></span>
-                <label for="log-pass">Zopakujte heslo</label>
-            </div>-->
             <input type="submit" value="Registrovať sa">
         </form>
     </div>
